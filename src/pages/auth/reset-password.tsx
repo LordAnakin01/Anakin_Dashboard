@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { createBrowserClient } from '@supabase/ssr'
 import { Mail } from 'lucide-react'
 import AuthLayout from './components/AuthLayout'
+import type { AuthError } from '@supabase/supabase-js'
 
 export default function ResetPassword() {
   const [email, setEmail] = useState('')
@@ -21,7 +22,6 @@ export default function ResetPassword() {
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
-    setSuccess(false)
     setIsLoading(true)
 
     try {
@@ -34,8 +34,9 @@ export default function ResetPassword() {
       }
 
       setSuccess(true)
-    } catch (error: any) {
-      setError(error.message)
+    } catch (error) {
+      const authError = error as AuthError
+      setError(authError.message)
     } finally {
       setIsLoading(false)
     }
@@ -45,20 +46,17 @@ export default function ResetPassword() {
     return (
       <AuthLayout
         title="Check your email"
-        subtitle="We've sent you a password reset link"
-        showBackLink={false}
+        subtitle="We&apos;ve sent you instructions to reset your password"
       >
-        <div className="text-center">
-          <p className="text-gray-600 mb-6">
-            Check your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder.
-          </p>
+        <p className="text-center text-gray-600">
+          Didn&apos;t receive the email? Check your spam folder or{' '}
           <button
-            onClick={() => router.push('/auth/signin')}
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FFD700]"
+            onClick={() => setSuccess(false)}
+            className="text-[#FFD700] hover:text-[#E6C200]"
           >
-            Return to sign in
+            try again
           </button>
-        </div>
+        </p>
       </AuthLayout>
     )
   }

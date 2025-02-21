@@ -1,11 +1,10 @@
 'use client'
 
-import { Bell, Settings, User, LogOut, ChevronDown, Home, HelpCircle, Moon, Sun } from 'lucide-react'
+import { Bell, Settings, User, LogOut, ChevronDown, HelpCircle, Moon, Sun } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { createBrowserClient } from '@supabase/ssr'
-import { useRouter, usePathname } from 'next/navigation'
-import { LucideIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import type { User as SupabaseUser } from '@supabase/supabase-js'
 
 interface NotificationProps {
@@ -15,29 +14,11 @@ interface NotificationProps {
   timestamp: string
 }
 
-interface NavItem {
-  label: string
-  href: string
-  icon: LucideIcon
-}
-
-const navItems: NavItem[] = []
-
-const notifications: NotificationProps[] = [
-  {
-    id: '1',
-    type: 'info',
-    message: 'New message received',
-    timestamp: '5m ago'
-  }
-]
-
 const Header = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [user, setUser] = useState<SupabaseUser | null>(null)
   const router = useRouter()
-  const pathname = usePathname()
 
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

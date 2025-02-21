@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import ArrowLeft from 'lucide-react/dist/esm/icons/arrow-left.js'
 
 export default function BackToHome() {
   return (
