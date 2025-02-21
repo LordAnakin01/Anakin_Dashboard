@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { createBrowserClient } from '@supabase/ssr'
 import { useRouter, usePathname } from 'next/navigation'
 import { LucideIcon } from 'lucide-react'
+import type { User as SupabaseUser } from '@supabase/supabase-js'
 
 interface NotificationProps {
   id: string
@@ -34,7 +35,7 @@ const notifications: NotificationProps[] = [
 const Header = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<SupabaseUser | null>(null)
   const router = useRouter()
   const pathname = usePathname()
 

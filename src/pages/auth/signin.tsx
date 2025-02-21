@@ -6,11 +6,7 @@ import Link from 'next/link'
 import { createBrowserClient } from '@supabase/ssr'
 import { Mail, Lock } from 'lucide-react'
 import AuthLayout from './components/AuthLayout'
-
-interface FormData {
-  email: string
-  password: string
-}
+import type { AuthError } from '@supabase/supabase-js'
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
@@ -42,8 +38,9 @@ export default function SignIn() {
 
       // Redirect to the requested page or dashboard
       router.push((redirect as string) || '/dashboard')
-    } catch (error: any) {
-      setError(error.message)
+    } catch (error) {
+      const authError = error as AuthError
+      setError(authError.message)
     } finally {
       setIsLoading(false)
     }

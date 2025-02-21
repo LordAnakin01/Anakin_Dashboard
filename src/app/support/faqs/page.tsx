@@ -80,7 +80,7 @@ export default function FAQsPage() {
 
       {/* Contact Support */}
       <div className="mt-8 bg-blue-50 rounded-xl p-6 text-center">
-        <h3 className="font-medium mb-2">Can't find what you're looking for?</h3>
+        <h3 className="font-medium mb-2">Can&apos;t find what you&apos;re looking for?</h3>
         <p className="text-gray-600 mb-4">Our support team is here to help</p>
         <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
           Contact Support
@@ -140,7 +140,7 @@ const faqs = [
   },
   {
     question: 'How can I reset my password?',
-    answer: 'To reset your password, click on the "Forgot Password" link on the login page. Enter your email address, and we\'ll send you instructions to create a new password. For security reasons, password reset links expire after 24 hours.',
+    answer: 'To reset your password, click on the "Forgot Password" link on the login page. Enter your email address, and we&apos;ll send you instructions to create a new password. For security reasons, password reset links expire after 24 hours.',
     links: [
       'Account Security Best Practices',
       'Two-Factor Authentication Setup',
