@@ -113,11 +113,7 @@ export default function DashboardNav() {
   }
 
   return (
-<<<<<<< HEAD
     <nav className="w-64 bg-white/50 backdrop-blur-xl border-r border-white/20 min-h-[calc(100vh-120px)]">
-=======
-    <nav className="w-64 bg-white/50 backdrop-blur-xl border-r border-white/20 h-[calc(100vh-60px)] overflow-y-auto">
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
       <div className="p-4 space-y-4">
         {navigationItems.map((item) => (
           <div key={item.label} className="space-y-1">

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Zap, Building, MapPin, DollarSign, Clock, ThumbsUp, ThumbsDown } from 'lucide-react'
-=======
-import { Zap, Building, MapPin, DollarSign, Clock, ThumbsUp, ThumbsDown, Star, ChevronRight } from 'lucide-react'
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 import BackToHome from '@/components/navigation/BackToHome'
 
 export default function RecommendationsPage() {

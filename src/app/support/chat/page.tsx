@@ -1,10 +1,6 @@
 'use client'
 
-<<<<<<< HEAD
 import { Send, Paperclip, Image as ImageIcon, Smile, User } from 'lucide-react'
-=======
-import { Send, Paperclip, Image, Smile, User } from 'lucide-react'
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 import { useState } from 'react'
 import BackToHome from '@/components/navigation/BackToHome'
 
@@ -88,11 +84,7 @@ export default function ChatSupportPage() {
                   <Paperclip className="w-5 h-5 text-gray-400" />
                 </button>
                 <button className="p-1 hover:bg-gray-100 rounded-lg transition-colors">
-<<<<<<< HEAD
                   <ImageIcon className="w-5 h-5 text-gray-400" />
-=======
-                  <Image className="w-5 h-5 text-gray-400" />
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
                 </button>
                 <button className="p-1 hover:bg-gray-100 rounded-lg transition-colors">
                   <Smile className="w-5 h-5 text-gray-400" />

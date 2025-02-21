@@ -14,7 +14,6 @@ const protectedRoutes = [
   '/settings',
 ]
 
-<<<<<<< HEAD
 interface AuthResponse {
   isAuthenticated: boolean
   redirectUrl?: string
@@ -30,14 +29,6 @@ interface SessionData {
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next()
-=======
-export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  })
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -67,7 +58,6 @@ export async function middleware(request: NextRequest) {
 
   const { data: { session } } = await supabase.auth.getSession()
 
-<<<<<<< HEAD
   // If user is signed in and accessing root or home page, redirect to dashboard
   if (session && (request.nextUrl.pathname === '/' || request.nextUrl.pathname === '/home')) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
@@ -80,15 +70,6 @@ export async function middleware(request: NextRequest) {
 
   // Allow access to home page and auth routes
   if (request.nextUrl.pathname === '/home' || request.nextUrl.pathname.startsWith('/auth/')) {
-=======
-  // If user is signed in and accessing landing page, redirect to dashboard
-  if (session && request.nextUrl.pathname === '/') {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
-  }
-
-  // Allow access to landing page and auth routes
-  if (request.nextUrl.pathname === '/' || request.nextUrl.pathname.startsWith('/auth/')) {
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
     return response
   }
 
@@ -105,7 +86,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl)
   }
 
-<<<<<<< HEAD
   const validateSession = async (token: string): Promise<AuthResponse> => {
     // Validate session logic here
     return { isAuthenticated: true }
@@ -116,8 +96,6 @@ export async function middleware(request: NextRequest) {
     return {}
   }
 
-=======
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
   return response
 }
 

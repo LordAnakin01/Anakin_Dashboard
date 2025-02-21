@@ -86,14 +86,11 @@ export default function FAQsPage() {
           Contact Support
         </button>
       </div>
-<<<<<<< HEAD
 
       <div className="mt-8">
         <h3 className="text-lg font-semibold mb-2">What if I can&apos;t find an answer to my question?</h3>
         <p className="text-gray-600">If you can&apos;t find what you&apos;re looking for, please contact our support team.</p>
       </div>
-=======
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
     </div>
   )
 }

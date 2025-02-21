@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Eye, Bell, Shield } from 'lucide-react'
-=======
-import { Eye, EyeOff, Globe, Users, Lock, Bell, Shield } from 'lucide-react'
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 
 export default function PrivacyPage() {
   return (

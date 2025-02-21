@@ -7,14 +7,11 @@ import { createBrowserClient } from '@supabase/ssr'
 import { Mail, Lock } from 'lucide-react'
 import AuthLayout from './components/AuthLayout'
 
-<<<<<<< HEAD
 interface FormData {
   email: string
   password: string
 }
 
-=======
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -133,19 +130,14 @@ export default function SignIn() {
           {isLoading ? 'Signing in...' : 'Sign in'}
         </button>
 
-<<<<<<< HEAD
-        <p className="text-sm text-gray-600">
-          Don&apos;t have an account? <Link href="/auth/signup" className="text-blue-600 hover:underline">Sign up</Link>
-=======
         <p className="text-center text-sm text-gray-600">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <Link
             href="/auth/signup"
             className="font-medium text-[#FFD700] hover:text-[#E6C200]"
           >
             Sign up
           </Link>
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
         </p>
       </form>
     </AuthLayout>

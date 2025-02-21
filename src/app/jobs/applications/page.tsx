@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Clock, CheckCircle, XCircle, AlertCircle, ChevronRight, Building, MapPin } from 'lucide-react'
 import BackToHome from '@/components/navigation/BackToHome'
 
@@ -14,21 +13,12 @@ interface Application {
   status: ApplicationStatus;
 }
 
-=======
-import { Clock, CheckCircle, XCircle, AlertCircle, ChevronRight, Building, MapPin, DollarSign } from 'lucide-react'
-import BackToHome from '@/components/navigation/BackToHome'
-
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 const statusColors = {
   applied: { bg: 'bg-blue-100', text: 'text-blue-700', icon: Clock },
   interviewing: { bg: 'bg-yellow-100', text: 'text-yellow-700', icon: AlertCircle },
   accepted: { bg: 'bg-green-100', text: 'text-green-700', icon: CheckCircle },
   rejected: { bg: 'bg-red-100', text: 'text-red-700', icon: XCircle }
-<<<<<<< HEAD
 } as const;
-=======
-}
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 
 export default function ApplicationsPage() {
   return (
@@ -55,13 +45,8 @@ export default function ApplicationsPage() {
         </div>
 
         <div className="divide-y divide-gray-100">
-<<<<<<< HEAD
           {applications.map((application: Application) => {
-            const status = statusColors[application.status as keyof typeof statusColors]
-=======
-          {applications.map((application) => {
             const status = statusColors[application.status]
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
             const StatusIcon = status.icon
             
             return (
@@ -125,11 +110,7 @@ export default function ApplicationsPage() {
   )
 }
 
-<<<<<<< HEAD
 const applications: Application[] = [
-=======
-const applications = [
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
   {
     id: 1,
     position: 'Senior Frontend Developer',

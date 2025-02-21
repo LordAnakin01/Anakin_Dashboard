@@ -1,11 +1,8 @@
 'use client'
 
-<<<<<<< HEAD
 import { useEffect, useState } from 'react'
 import { createBrowserClient } from '@supabase/ssr'
 import { useRouter } from 'next/navigation'
-=======
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 import Header from './Header'
 import DashboardNav from '../navigation/DashboardNav'
 
@@ -14,7 +11,6 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
-<<<<<<< HEAD
   const [userName, setUserName] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
@@ -91,7 +87,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   }, [supabase, router])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-red-200 via-red-100 to-white">
       <Header />
       <div className="pt-[90px]">
         {!isLoading && (
@@ -107,21 +103,9 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             {children}
           </main>
         </div>
-=======
-  return (
-    <div className="min-h-screen bg-[#F5F5F5]">
-      <Header />
-      <div className="flex pt-[60px]">
-        <DashboardNav />
-        <main className="flex-1 min-h-screen">
-          <div className="max-w-[1400px] mx-auto p-8">
-            {children}
-          </div>
-        </main>
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
       </div>
     </div>
   )
 }
 
-export default DashboardLayout 
+export default DashboardLayout

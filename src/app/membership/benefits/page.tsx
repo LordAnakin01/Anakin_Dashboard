@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Heart, Book, Building, Briefcase, Users, DollarSign } from 'lucide-react'
-=======
-import { Zap, Heart, Book, Building, Briefcase, Users, Gift, DollarSign, Star, Award, Shield } from 'lucide-react'
->>>>>>> 5c242a366e112962130ca783e6383b088a2033cd
 import BackToHome from '@/components/navigation/BackToHome'
 
 export default function BenefitsPage() {
