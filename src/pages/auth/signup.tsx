@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { createBrowserClient } from '@supabase/ssr'
 import { Mail, Lock, User } from 'lucide-react'
 import AuthLayout from './components/AuthLayout'
-import { AuthError } from '@supabase/supabase-js'
+import type { AuthError } from '@supabase/supabase-js'
 
 export default function SignUp() {
   const [name, setName] = useState('')
@@ -48,8 +48,11 @@ export default function SignUp() {
 
       router.push('/auth/verify-email')
     } catch (error) {
-      const authError = error as AuthError
-      setError(authError.message)
+      if (error instanceof Error) {
+        setError(error.message)
+      } else {
+        setError('An unexpected error occurred')
+      }
     } finally {
       setIsLoading(false)
     }

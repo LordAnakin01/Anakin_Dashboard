@@ -1,5 +1,4 @@
 import { Search, ChevronDown, ChevronUp } from 'lucide-react'
-import { useState } from 'react'
 import BackToHome from '@/components/navigation/BackToHome'
 
 export default function FAQsPage() {

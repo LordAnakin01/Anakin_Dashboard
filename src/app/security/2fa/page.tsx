@@ -1,4 +1,4 @@
-import { Shield, Smartphone, Mail, Key, CheckCircle, XCircle } from 'lucide-react'
+import { Smartphone, Mail, Key, CheckCircle } from 'lucide-react'
 import BackToHome from '@/components/navigation/BackToHome'
 
 export default function TwoFactorAuthPage() {

@@ -35,8 +35,11 @@ export default function ResetPassword() {
 
       setSuccess(true)
     } catch (error) {
-      const authError = error as AuthError
-      setError(authError.message)
+      if (error instanceof Error) {
+        setError(error.message)
+      } else {
+        setError('An unexpected error occurred')
+      }
     } finally {
       setIsLoading(false)
     }

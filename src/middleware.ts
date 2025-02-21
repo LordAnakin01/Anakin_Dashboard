@@ -15,19 +15,6 @@ const protectedRoutes = [
   '/settings',
 ]
 
-interface AuthResponse {
-  isAuthenticated: boolean
-  redirectUrl?: string
-}
-
-interface SessionData {
-  user?: {
-    id: string
-    email: string
-    role: string
-  }
-}
-
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next()
 
@@ -85,16 +72,6 @@ export async function middleware(request: NextRequest) {
     const redirectUrl = new URL('/auth/signin', request.url)
     redirectUrl.searchParams.set('redirect', request.nextUrl.pathname)
     return NextResponse.redirect(redirectUrl)
-  }
-
-  const validateSession = async (token: string): Promise<AuthResponse> => {
-    // Validate session logic here
-    return { isAuthenticated: true }
-  }
-
-  const getSessionData = async (token: string): Promise<SessionData> => {
-    // Get session data logic here
-    return {}
   }
 
   return response
