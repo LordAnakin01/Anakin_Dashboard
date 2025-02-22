@@ -11,6 +11,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "The Anakin Dynasty",
   description: "Employee Dashboard with Onboarding & Time Tracking Interface",
+  viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -20,10 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
-      <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      </head>
-      <body className="h-full">
+      <body className="h-full bg-gray-50 antialiased">
         {children}
       </body>
     </html>
