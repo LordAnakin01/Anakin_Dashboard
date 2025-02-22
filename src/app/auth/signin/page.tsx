@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { createBrowserClient } from '@supabase/ssr'
 import { User } from 'lucide-react'
 import type { AuthError } from '@supabase/supabase-js'
+import { getSupabaseClient } from '@/lib/supabase'
 import styles from './signin.module.css'
 
 export default function SignIn() {
@@ -17,12 +17,8 @@ export default function SignIn() {
   const [message, setMessage] = useState('')
   const btnRef = useRef<HTMLButtonElement>(null)
   const router = useRouter()
-  const { redirect } = router.query
-
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+  const searchParams = useSearchParams()
+  const redirect = searchParams?.get('redirect')
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,6 +28,11 @@ export default function SignIn() {
     setIsLoading(true)
 
     try {
+      const supabase = getSupabaseClient()
+      if (!supabase) {
+        throw new Error('Unable to initialize Supabase client')
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -41,10 +42,13 @@ export default function SignIn() {
         throw error
       }
 
-      router.push((redirect as string) || '/dashboard')
+      router.push(redirect || '/dashboard')
     } catch (error) {
-      const authError = error as AuthError
-      setError(authError.message)
+      if (error instanceof Error) {
+        setError(error.message)
+      } else {
+        setError('An unexpected error occurred')
+      }
     } finally {
       setIsLoading(false)
     }

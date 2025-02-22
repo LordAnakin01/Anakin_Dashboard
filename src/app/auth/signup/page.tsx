@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { createBrowserClient } from '@supabase/ssr'
 import { User } from 'lucide-react'
 import type { AuthError } from '@supabase/supabase-js'
+import { getSupabaseClient } from '@/lib/supabase'
 import styles from './signup.module.css'
 
 export default function SignUp() {
@@ -20,11 +20,6 @@ export default function SignUp() {
   const btnRef = useRef<HTMLButtonElement>(null)
   const router = useRouter()
 
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
-
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email || !password || !name || !confirmPassword) return
@@ -35,6 +30,11 @@ export default function SignUp() {
     try {
       if (password !== confirmPassword) {
         throw new Error('Passwords do not match')
+      }
+
+      const supabase = getSupabaseClient()
+      if (!supabase) {
+        throw new Error('Unable to initialize Supabase client')
       }
 
       const { error } = await supabase.auth.signUp({
