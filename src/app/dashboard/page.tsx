@@ -1,9 +1,10 @@
 'use client'
 
+import { Suspense } from 'react'
 import { User, Briefcase, Users, Gift, DollarSign, Lock, HelpCircle } from 'lucide-react'
 import Link from 'next/link'
 
-export default function DashboardPage() {
+function DashboardContent() {
   return (
     <div className="max-w-6xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
@@ -122,5 +123,13 @@ export default function DashboardPage() {
         </Link>
       </div>
     </div>
+  )
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   )
 } 
