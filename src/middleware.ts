@@ -5,14 +5,13 @@ import type { CookieOptions } from '@supabase/ssr'
 
 const protectedRoutes = [
   '/dashboard',
-  '/people',
-  '/reviews',
-  '/calendar',
-  '/pension',
-  '/devices',
-  '/compensation',
-  '/benefits',
-  '/settings',
+  '/apps',
+  '/membership',
+  '/jobs',
+  '/community',
+  '/financial',
+  '/security',
+  '/support'
 ]
 
 export async function middleware(request: NextRequest) {

@@ -34,8 +34,8 @@ const navigationItems = [
     description: 'Manage your membership',
     subItems: [
       { label: 'Profile', href: '/membership/profile', icon: User },
-      { label: 'Subscription', href: '/membership/subscription', icon: CreditCard },
-      { label: 'Benefits', href: '/membership/benefits', icon: Zap }
+      { label: 'Settings', href: '/membership/settings', icon: Settings },
+      { label: 'Billing', href: '/membership/billing', icon: CreditCard }
     ]
   },
   {

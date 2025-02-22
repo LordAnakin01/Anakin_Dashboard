@@ -1,28 +1,28 @@
 'use client'
 
-import { Briefcase, Computer, Heart, PiggyBank, Home, Users, FileText, Calendar } from 'lucide-react'
+import { Home, Users, FileText, Calendar, PiggyBank, Computer, Briefcase, Heart, Settings } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const Sidebar = () => {
   const pathname = usePathname()
 
-  const sidebarItems = [
-    { label: 'Dashboard', href: '/', icon: Home },
-    { label: 'People', href: '/people', icon: Users },
-    { label: 'Reviews', href: '/reviews', icon: FileText },
-    { label: 'Calendar', href: '/calendar', icon: Calendar },
-    { label: 'Pension', href: '/pension', icon: PiggyBank },
-    { label: 'Devices', href: '/devices', icon: Computer },
-    { label: 'Compensation', href: '/compensation', icon: Briefcase },
-    { label: 'Benefits', href: '/benefits', icon: Heart },
+  const navigationItems = [
+    { label: 'Dashboard', href: '/dashboard', icon: Home },
+    { label: 'Apps', href: '/apps', icon: Computer },
+    { label: 'Membership', href: '/membership', icon: Users },
+    { label: 'Jobs', href: '/jobs', icon: Briefcase },
+    { label: 'Community', href: '/community', icon: Heart },
+    { label: 'Financial', href: '/financial', icon: PiggyBank },
+    { label: 'Security', href: '/security', icon: Settings },
+    { label: 'Support', href: '/support', icon: FileText }
   ]
 
   return (
     <aside className="fixed left-0 top-[60px] h-[calc(100vh-60px)] w-[280px] bg-white/40 backdrop-blur-xl border-r border-white/20">
       <div className="p-6">
         <nav className="space-y-1">
-          {sidebarItems.map((item) => {
+          {navigationItems.map((item) => {
             const Icon = item.icon
             const isActive = pathname === item.href
             
