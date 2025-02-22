@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { createBrowserClient } from '@supabase/ssr'
-import { Mail, Lock, User } from 'lucide-react'
-import AuthLayout from './components/AuthLayout'
+import { User } from 'lucide-react'
 import type { AuthError } from '@supabase/supabase-js'
+import styles from './signup.module.css'
 
 export default function SignUp() {
   const [name, setName] = useState('')
@@ -15,6 +15,9 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [buttonPosition, setButtonPosition] = useState('shiftLeft')
+  const [message, setMessage] = useState('')
+  const btnRef = useRef<HTMLButtonElement>(null)
   const router = useRouter()
 
   const supabase = createBrowserClient(
@@ -24,6 +27,8 @@ export default function SignUp() {
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!email || !password || !name || !confirmPassword) return
+    
     setError(null)
     setIsLoading(true)
 
@@ -58,124 +63,119 @@ export default function SignUp() {
     }
   }
 
-  return (
-    <AuthLayout
-      title="Create an account"
-      subtitle="Sign up to get started with your employee dashboard"
-    >
-      <form onSubmit={handleSignUp} className="space-y-6">
-        {error && (
-          <div className="bg-red-50 text-red-800 p-3 rounded-lg text-sm">
-            {error}
-          </div>
-        )}
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    
+    if (!email || !password || !name || !confirmPassword || password !== confirmPassword) {
+      const positions = ['shiftLeft', 'shiftTop', 'shiftRight', 'shiftBottom']
+      interval = setInterval(() => {
+        setButtonPosition(current => {
+          const currentIndex = positions.indexOf(current)
+          return positions[(currentIndex + 1) % positions.length]
+        })
+      }, 2000)
+      setMessage(password !== confirmPassword ? 'Passwords do not match' : 'Please fill in all fields before proceeding')
+    } else {
+      setButtonPosition('noShift')
+      setMessage('Great! Now you can proceed')
+    }
 
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Full name
-          </label>
-          <div className="mt-1 relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <User className="h-5 w-5 text-gray-400" />
-            </div>
+    return () => {
+      if (interval) clearInterval(interval)
+    }
+  }, [email, password, name, confirmPassword])
+
+  return (
+    <div className={`${styles.mainContainer} ${styles.centeredFlex}`}>
+      <div className={styles.formContainer}>
+        <div className={styles.icon}>
+          <User size={40} />
+        </div>
+        
+        <form onSubmit={handleSignUp} className={`${styles.form} ${styles.centeredFlex}`}>
+          <h2 className={styles.title}>Create Account</h2>
+          
+          {(error || message) && (
+            <p className={styles.msg} style={{ color: error ? '#fa2929' : message.includes('Great') ? '#92ff92' : '#fa2929' }}>
+              {error || message}
+            </p>
+          )}
+
+          <div className={styles.field}>
             <input
-              id="name"
               type="text"
+              id="name"
+              className={styles.input}
+              placeholder="Full Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
-              placeholder="John Doe"
             />
+            <i className={`fa fa-user ${styles.fieldIcon}`}></i>
           </div>
-        </div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email address
-          </label>
-          <div className="mt-1 relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Mail className="h-5 w-5 text-gray-400" />
-            </div>
+          <div className={styles.field}>
             <input
-              id="email"
               type="email"
+              id="email"
+              className={styles.input}
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
-              placeholder="you@company.com"
             />
+            <i className={`fa fa-envelope ${styles.fieldIcon}`}></i>
           </div>
-        </div>
 
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            Password
-          </label>
-          <div className="mt-1 relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Lock className="h-5 w-5 text-gray-400" />
-            </div>
+          <div className={styles.field}>
             <input
-              id="password"
               type="password"
+              id="password"
+              className={styles.input}
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
-              placeholder="••••••••"
               minLength={6}
             />
+            <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
           </div>
-          <p className="mt-2 text-sm text-gray-500">
-            Must be at least 6 characters long
-          </p>
-        </div>
+          <p className={styles.hint}>Must be at least 6 characters long</p>
 
-        <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-            Confirm Password
-          </label>
-          <div className="mt-1 relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Lock className="h-5 w-5 text-gray-400" />
-            </div>
+          <div className={styles.field}>
             <input
-              id="confirmPassword"
               type="password"
+              id="confirmPassword"
+              className={styles.input}
+              placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
-              placeholder="••••••••"
               minLength={6}
             />
+            <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
           </div>
-          <p className="mt-2 text-sm text-gray-500">
-            Must be at least 6 characters long
+          <p className={styles.hint}>Must match the password above</p>
+
+          <div className={styles.btnContainer}>
+            <button
+              ref={btnRef}
+              type="submit"
+              className={`${styles.signupBtn} ${styles[buttonPosition]}`}
+              disabled={!email || !password || !name || !confirmPassword || password !== confirmPassword || isLoading}
+            >
+              {isLoading ? 'Creating account...' : 'Create account'}
+            </button>
+          </div>
+
+          <p className={styles.signin}>
+            Already have an account?{' '}
+            <Link href="/auth/signin" className={styles.link}>
+              Sign in
+            </Link>
           </p>
-        </div>
-
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FFD700] disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isLoading ? 'Creating account...' : 'Create account'}
-        </button>
-
-        <p className="text-center text-sm text-gray-600">
-          Already have an account?{' '}
-          <Link
-            href="/auth/signin"
-            className="font-medium text-[#FFD700] hover:text-[#E6C200]"
-          >
-            Sign in
-          </Link>
-        </p>
-      </form>
-    </AuthLayout>
+        </form>
+      </div>
+    </div>
   )
 } 
