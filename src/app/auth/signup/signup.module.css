@@ -3,7 +3,9 @@
 .mainContainer {
     min-height: 100vh;
     min-width: 450px;
-    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .centeredFlex {
@@ -36,7 +38,7 @@
 
 .form {
     flex-direction: column;
-    padding: 25px 25px 10px;
+    padding: 25px 25px 30px;
     height: 640px;
     border-radius: 30px;
     background: rgba(19, 19, 19, 0.736);
@@ -102,15 +104,22 @@
 .link {
     text-decoration: none;
     color: #9b9b9b;
+    transition: color 0.2s;
+}
+
+.link:hover {
+    color: #ffffff;
 }
 
 .btnContainer {
     padding: 20px;
     transition: .2s linear;
+    width: 100%;
+    position: relative;
 }
 
 .signupBtn {
-    padding: 5px 20px;
+    padding: 12px 20px;
     border: none;
     background: rgb(25, 62, 97);
     color: white;
@@ -120,42 +129,53 @@
     transition: .3s;
     margin: 25px 0;
     width: 100%;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
 }
 
 .signupBtn:hover:not(:disabled) {
-    cursor: pointer;
+    background: rgb(30, 75, 117);
+    transform: translateY(-2px);
 }
 
 .signupBtn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .signin {
     color: rgb(70, 70, 70);
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .shiftLeft {
     animation: shiftLeftAnim 2s infinite;
+    pointer-events: none;
 }
 
 .shiftRight {
     animation: shiftRightAnim 2s infinite;
+    pointer-events: none;
 }
 
 .shiftTop {
     animation: shiftTopAnim 2s infinite;
+    pointer-events: none;
 }
 
 .shiftBottom {
     animation: shiftBottomAnim 2s infinite;
+    pointer-events: none;
 }
 
 .noShift {
     transform: translate(0%, 0%);
     animation: none;
+    pointer-events: auto;
 }
 
 @keyframes shiftLeftAnim {

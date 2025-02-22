@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { User } from 'lucide-react'
@@ -8,7 +8,7 @@ import type { AuthError } from '@supabase/supabase-js'
 import { getSupabaseClient } from '@/lib/supabase'
 import styles from './signin.module.css'
 
-export default function SignIn() {
+function SignInContent() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -55,7 +55,7 @@ export default function SignIn() {
   }
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: NodeJS.Timeout | undefined;
     
     if (!email || !password) {
       const positions = ['shiftLeft', 'shiftTop', 'shiftRight', 'shiftBottom']
@@ -131,7 +131,6 @@ export default function SignIn() {
             <button
               ref={btnRef}
               type="submit"
-              id="login-btn"
               className={`${styles.loginBtn} ${styles[buttonPosition]}`}
               disabled={!email || !password || isLoading}
             >
@@ -148,5 +147,13 @@ export default function SignIn() {
         </form>
       </div>
     </div>
+  )
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignInContent />
+    </Suspense>
   )
 } 
