@@ -55,26 +55,22 @@ function SignInContent() {
   }
 
   useEffect(() => {
-    let interval: NodeJS.Timeout | undefined;
+    const positions = ['shiftLeft', 'shiftTop', 'shiftRight', 'shiftBottom'];
+    let currentIndex = 0;
     
     if (!email || !password) {
-      const positions = ['shiftLeft', 'shiftTop', 'shiftRight', 'shiftBottom']
-      interval = setInterval(() => {
-        setButtonPosition(current => {
-          const currentIndex = positions.indexOf(current)
-          return positions[(currentIndex + 1) % positions.length]
-        })
-      }, 2000)
-      setMessage('Please fill in all fields before proceeding')
+      const interval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % positions.length;
+        setButtonPosition(positions[currentIndex]);
+        setMessage('Please fill in all fields before proceeding');
+      }, 2000);
+      
+      return () => clearInterval(interval);
     } else {
-      setButtonPosition('noShift')
-      setMessage('Great! Now you can proceed')
+      setButtonPosition('noShift');
+      setMessage('Great! Now you can proceed');
     }
-
-    return () => {
-      if (interval) clearInterval(interval)
-    }
-  }, [email, password])
+  }, [email, password]);
 
   return (
     <div className={`${styles.mainContainer} ${styles.centeredFlex}`}>

@@ -113,9 +113,7 @@
 
 .btnContainer {
     padding: 20px;
-    transition: .2s linear;
     width: 100%;
-    position: relative;
 }
 
 .signupBtn {
@@ -126,23 +124,18 @@
     font-weight: 600;
     font-size: 16px;
     border-radius: 15px;
-    transition: .3s;
     margin: 25px 0;
     width: 100%;
     cursor: pointer;
-    position: relative;
-    z-index: 10;
 }
 
 .signupBtn:hover:not(:disabled) {
     background: rgb(30, 75, 117);
-    transform: translateY(-2px);
 }
 
 .signupBtn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    pointer-events: none;
 }
 
 .signin {
@@ -153,47 +146,25 @@
 }
 
 .shiftLeft {
-    animation: shiftLeftAnim 2s infinite;
-    pointer-events: none;
+    transform: translateX(-120%);
 }
 
 .shiftRight {
-    animation: shiftRightAnim 2s infinite;
-    pointer-events: none;
+    transform: translateX(120%);
 }
 
 .shiftTop {
-    animation: shiftTopAnim 2s infinite;
-    pointer-events: none;
+    transform: translateY(-150%);
 }
 
 .shiftBottom {
-    animation: shiftBottomAnim 2s infinite;
-    pointer-events: none;
+    transform: translateY(150%);
 }
 
 .noShift {
     transform: translate(0%, 0%);
-    animation: none;
-    pointer-events: auto;
 }
 
-@keyframes shiftLeftAnim {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-120%); }
-}
-
-@keyframes shiftRightAnim {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(120%); }
-}
-
-@keyframes shiftTopAnim {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-150%); }
-}
-
-@keyframes shiftBottomAnim {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(150%); }
+.signupBtn {
+    transition: all 0.3s ease;
 } 
