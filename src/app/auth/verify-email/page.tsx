@@ -1,13 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Mail, ArrowRight, RefreshCw } from 'lucide-react'
 import { getSupabaseClient } from '@/lib/supabase'
 import styles from './verify-email.module.css'
 
-export default function VerifyEmailPage() {
+// Separate client component for handling search params
+function VerifyEmailContent() {
   const [isResending, setIsResending] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -108,5 +109,25 @@ export default function VerifyEmailPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+// Main page component with Suspense boundary
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={
+      <div className={`${styles.mainContainer} ${styles.centeredFlex}`}>
+        <div className={styles.formContainer}>
+          <div className={styles.icon}>
+            <Mail size={40} />
+          </div>
+          <div className={`${styles.content} ${styles.centeredFlex}`}>
+            <h2 className={styles.title}>Loading...</h2>
+          </div>
+        </div>
+      </div>
+    }>
+      <VerifyEmailContent />
+    </Suspense>
   )
 } 
