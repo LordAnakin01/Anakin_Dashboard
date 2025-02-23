@@ -112,10 +112,10 @@ export default function DashboardContent() {
               Profile
             </Link>
             <Link 
-              href="/membership/settings"
+              href="/membership/billing"
               className="flex-1 text-center text-sm py-2 bg-black/5 rounded-lg hover:bg-black/10 transition-colors"
             >
-              Settings
+              Billing
             </Link>
           </div>
         </div>
