@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, CheckCircle, Globe, Users, Building, Zap } from 'lucide-react'
+import { ArrowRight, CheckCircle, Globe, Users, Building, Zap, Cog, Battery, ShoppingBag, Truck, Cpu, Landmark, Shield, Leaf, Heart, Stethoscope, GraduationCap, Briefcase, Film } from 'lucide-react'
 import HomeHeader from '@/components/layout/HomeHeader'
 
 export default function AboutUsPage() {
@@ -225,67 +225,67 @@ const coreValues = [
 
 const industries = [
   {
-    icon: '📌',
+    icon: <Cog className="w-6 h-6 text-blue-600" />,
     title: 'Manufacturing & Engineering',
     description: 'Automotive, Aerospace, and Industrial Machinery.'
   },
   {
-    icon: '📌',
+    icon: <Battery className="w-6 h-6 text-yellow-600" />,
     title: 'Energy & Utilities',
     description: 'Renewable energy, fuel distribution, and mining.'
   },
   {
-    icon: '📌',
+    icon: <ShoppingBag className="w-6 h-6 text-pink-600" />,
     title: 'Consumer Goods & Retail',
     description: 'Fashion, packaged foods, and e-commerce.'
   },
   {
-    icon: '📌',
+    icon: <Truck className="w-6 h-6 text-green-600" />,
     title: 'Logistics & Transportation',
     description: 'Freight, urban deliveries, and smart infrastructure.'
   },
   {
-    icon: '📌',
+    icon: <Cpu className="w-6 h-6 text-purple-600" />,
     title: 'Technology & Innovation',
     description: 'AI, software, telecommunications, and cybersecurity.'
   },
   {
-    icon: '📌',
+    icon: <Landmark className="w-6 h-6 text-emerald-600" />,
     title: 'Finance & Banking',
     description: 'Investment, credit services, and digital banking.'
   },
   {
-    icon: '📌',
+    icon: <Shield className="w-6 h-6 text-red-600" />,
     title: 'Defense & Security',
     description: 'Cyber defense, tactical equipment, and surveillance.'
   },
   {
-    icon: '📌',
+    icon: <Leaf className="w-6 h-6 text-lime-600" />,
     title: 'Sustainability & Agriculture',
     description: 'Waste-to-energy, agritech, and food security.'
   },
   {
-    icon: '📌',
+    icon: <Heart className="w-6 h-6 text-orange-600" />,
     title: 'Social Impact & Startups',
     description: 'Funding entrepreneurs and CSR initiatives.'
   },
   {
-    icon: '📌',
+    icon: <Stethoscope className="w-6 h-6 text-cyan-600" />,
     title: 'Healthcare & Life Sciences',
     description: 'Hospitals, pharmaceuticals, and biotech.'
   },
   {
-    icon: '📌',
+    icon: <GraduationCap className="w-6 h-6 text-indigo-600" />,
     title: 'Education & Development',
     description: 'Schools, universities, and vocational training.'
   },
   {
-    icon: '📌',
+    icon: <Briefcase className="w-6 h-6 text-gray-600" />,
     title: 'Professional Services',
     description: 'Business consulting, legal, HR, and advisory.'
   },
   {
-    icon: '📌',
+    icon: <Film className="w-6 h-6 text-rose-600" />,
     title: 'Media & Entertainment',
     description: 'Film, gaming, publishing, and digital content.'
   }
