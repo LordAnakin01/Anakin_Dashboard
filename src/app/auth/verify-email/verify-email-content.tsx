@@ -11,20 +11,27 @@ export default function VerifyEmailContent() {
   const [isResending, setIsResending] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
   const searchParams = useSearchParams()
   const email = searchParams?.get('email')
 
   useEffect(() => {
     const handleEmailVerification = async () => {
-      const supabase = getSupabaseClient()
-      if (!supabase) return
+      try {
+        const supabase = getSupabaseClient()
+        if (!supabase) return
 
-      const { data: { user } } = await supabase.auth.getUser()
-      
-      if (user?.email_confirmed_at) {
-        // Email is verified, redirect to dashboard
-        router.push('/dashboard')
+        const { data: { user } } = await supabase.auth.getUser()
+        
+        if (user?.email_confirmed_at) {
+          // Email is verified, redirect to dashboard
+          router.push('/dashboard')
+        }
+      } catch (err) {
+        console.error('Error checking email verification:', err)
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -59,6 +66,21 @@ export default function VerifyEmailContent() {
     } finally {
       setIsResending(false)
     }
+  }
+
+  if (isLoading) {
+    return (
+      <div className={`${styles.mainContainer} ${styles.centeredFlex}`}>
+        <div className={styles.formContainer}>
+          <div className={styles.icon}>
+            <Mail size={40} />
+          </div>
+          <div className={`${styles.content} ${styles.centeredFlex}`}>
+            <h2 className={styles.title}>Loading...</h2>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
