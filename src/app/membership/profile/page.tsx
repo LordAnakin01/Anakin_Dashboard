@@ -1,8 +1,108 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import { Edit, Upload } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getSupabaseClient } from '@/lib/supabase'
 
 export default function ProfilePage() {
+  const [userData, setUserData] = useState({
+    fullName: '',
+    membershipTier: '',
+    memberSince: '',
+    avatarUrl: null,
+    dateOfBirth: '',
+    gender: '',
+    nationality: '',
+    phoneNumber: '',
+    email: '',
+    residentialAddress: '',
+    employmentStatus: '',
+    employerName: '',
+    industry: '',
+    jobTitle: '',
+    workAddress: '',
+    monthlySalary: '',
+    educationLevel: '',
+    institution: '',
+    fieldOfStudy: '',
+    certifications: [],
+    skills: [],
+    emergencyContactName: '',
+    emergencyContactRelation: '',
+    emergencyContactPhone: '',
+    walletName: '',
+    bankAccountDetails: '',
+    referralCode: '',
+    communicationPreference: ''
+  })
+
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const supabase = getSupabaseClient()
+        if (!supabase) {
+          throw new Error('Could not initialize Supabase client')
+        }
+
+        const { data: { user }, error: userError } = await supabase.auth.getUser()
+        if (userError) throw userError
+
+        if (!user) {
+          throw new Error('No user found')
+        }
+
+        // Get profile data
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single()
+
+        if (profileError) throw profileError
+
+        setUserData({
+          fullName: profile.full_name || user.user_metadata?.full_name || 'Anonymous User',
+          membershipTier: profile.membership_tier || 'Basic Member',
+          memberSince: new Date(user.created_at).toLocaleDateString('en-US', {
+            month: 'long',
+            year: 'numeric'
+          }),
+          avatarUrl: profile.avatar_url,
+          dateOfBirth: profile.date_of_birth || '',
+          gender: profile.gender || '',
+          nationality: profile.nationality || '',
+          phoneNumber: profile.phone_number || '',
+          email: user.email || '',
+          residentialAddress: profile.residential_address || '',
+          employmentStatus: profile.employment_status || '',
+          employerName: profile.employer_name || '',
+          industry: profile.industry || '',
+          jobTitle: profile.job_title || '',
+          workAddress: profile.work_address || '',
+          monthlySalary: profile.monthly_salary || '',
+          educationLevel: profile.education_level || '',
+          institution: profile.institution || '',
+          fieldOfStudy: profile.field_of_study || '',
+          certifications: profile.certifications || [],
+          skills: profile.skills || [],
+          emergencyContactName: profile.emergency_contact_name || '',
+          emergencyContactRelation: profile.emergency_contact_relation || '',
+          emergencyContactPhone: profile.emergency_contact_phone || '',
+          walletName: profile.wallet_name || '',
+          bankAccountDetails: profile.bank_account_details || '',
+          referralCode: profile.referral_code || '',
+          communicationPreference: profile.communication_preference || ''
+        })
+      } catch (error) {
+        console.error('Error loading user data:', error)
+      }
+    }
+
+    loadUserData()
+  }, [])
+
   return (
     <div className="max-w-5xl mx-auto pb-20 pt-16">
       {/* Profile Header */}
@@ -10,20 +110,21 @@ export default function ProfilePage() {
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-8">
             <div className="relative w-40 h-40">
-              <div className="w-full h-full rounded-full overflow-hidden bg-gray-100 border-4 border-white shadow-lg">
+              <div className="w-full h-full rounded-full overflow-hidden bg-gray-100 border-4 border-white shadow-lg relative">
                 <Image
-                  src="/images/default-avatar.png"
+                  src={userData.avatarUrl || 'https://ui-avatars.com/api/?name=User&background=random'}
                   alt="Profile Picture"
                   fill
+                  sizes="160px"
                   className="object-cover"
                 />
               </div>
             </div>
             <div>
-              <h1 className="text-3xl font-bold mb-2">John Doe</h1>
+              <h1 className="text-3xl font-bold mb-2">{userData.fullName}</h1>
               <div className="text-gray-600 mb-4">
-                <p>Premium Member</p>
-                <p>Member since January 2024</p>
+                <p>{userData.membershipTier}</p>
+                <p>Member since {userData.memberSince}</p>
               </div>
               <Link
                 href="/membership/profile/edit"
@@ -38,63 +139,38 @@ export default function ProfilePage() {
       </div>
 
       {/* Profile Sections */}
-      <div className="space-y-8">
+      <div className="space-y-6">
         {/* 1. Personal Information */}
         <section className="bg-white rounded-xl p-6 shadow-sm">
           <h2 className="text-xl font-semibold mb-4">Personal Information</h2>
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="text-sm text-gray-500 mb-1">Full Name</div>
-              <div>John Doe</div>
+              <div>{userData.fullName}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Date of Birth</div>
-              <div>January 1, 1990</div>
+              <div>{userData.dateOfBirth}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Gender</div>
-              <div>Male</div>
+              <div>{userData.gender}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Nationality</div>
-              <div>Nigerian</div>
+              <div>{userData.nationality}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Phone Number</div>
-              <div>+234 XXX XXX XXXX</div>
+              <div>{userData.phoneNumber}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Email Address</div>
-              <div>john.doe@example.com</div>
+              <div>{userData.email}</div>
             </div>
             <div className="col-span-2">
               <div className="text-sm text-gray-500 mb-1">Residential Address</div>
-              <div>123 Example Street, City, State</div>
-            </div>
-          </div>
-        </section>
-
-        {/* 2. Security & Identity Verification */}
-        <section className="bg-white rounded-xl p-6 shadow-sm">
-          <h2 className="text-xl font-semibold mb-4">Security & Identity Verification</h2>
-          <div className="grid grid-cols-2 gap-6">
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Government-Issued ID</div>
-              <div className="flex items-center gap-2">
-                <Upload className="w-4 h-4 text-gray-400" />
-                ID_Document.pdf
-              </div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">BVN</div>
-              <div>XXXX XXXX XXXX</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Identity Verification Selfie</div>
-              <div className="flex items-center gap-2">
-                <Upload className="w-4 h-4 text-gray-400" />
-                Selfie.jpg
-              </div>
+              <div>{userData.residentialAddress}</div>
             </div>
           </div>
         </section>
@@ -105,27 +181,27 @@ export default function ProfilePage() {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="text-sm text-gray-500 mb-1">Employment Status</div>
-              <div>Employed</div>
+              <div>{userData.employmentStatus}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Current Employer</div>
-              <div>Example Company Ltd</div>
+              <div>{userData.employerName}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Industry</div>
-              <div>Technology</div>
+              <div>{userData.industry}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Job Title</div>
-              <div>Software Engineer</div>
+              <div>{userData.jobTitle}</div>
             </div>
             <div className="col-span-2">
               <div className="text-sm text-gray-500 mb-1">Work Address</div>
-              <div>456 Work Street, Business District, City</div>
+              <div>{userData.workAddress}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Monthly Gross Salary</div>
-              <div>₦XXX,XXX</div>
+              <div>{userData.monthlySalary}</div>
             </div>
           </div>
         </section>
@@ -136,48 +212,19 @@ export default function ProfilePage() {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="text-sm text-gray-500 mb-1">Highest Level of Education</div>
-              <div>Bachelor's Degree</div>
+              <div>{userData.educationLevel}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Institution Attended</div>
-              <div>Example University</div>
+              <div>{userData.institution}</div>
             </div>
             <div>
-              <div className="text-sm text-gray-500 mb-1">Educational Certificate</div>
-              <div className="flex items-center gap-2">
-                <Upload className="w-4 h-4 text-gray-400" />
-                Certificate.pdf
-              </div>
+              <div className="text-sm text-gray-500 mb-1">Field of Study</div>
+              <div>{userData.fieldOfStudy}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Professional Certifications</div>
-              <div className="flex items-center gap-2">
-                <Upload className="w-4 h-4 text-gray-400" />
-                Certifications.pdf
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 5. Membership & Payment Details */}
-        <section className="bg-white rounded-xl p-6 shadow-sm">
-          <h2 className="text-xl font-semibold mb-4">Membership & Payment Details</h2>
-          <div className="grid grid-cols-2 gap-6">
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Membership Tier</div>
-              <div>Premium</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Registration Fee</div>
-              <div>₦75,000</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Payment Method</div>
-              <div>Direct Debit</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Monthly Subscription</div>
-              <div>5% of salary (₦10,000)</div>
+              <div>{userData.certifications.join(', ')}</div>
             </div>
           </div>
         </section>
@@ -188,15 +235,7 @@ export default function ProfilePage() {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="text-sm text-gray-500 mb-1">Key Skills</div>
-              <div>JavaScript, React, Node.js</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Preferred Industry</div>
-              <div>Technology</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Willing to Relocate</div>
-              <div>Yes - Lagos, Abuja</div>
+              <div>{userData.skills.join(', ')}</div>
             </div>
           </div>
         </section>
@@ -207,26 +246,15 @@ export default function ProfilePage() {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="text-sm text-gray-500 mb-1">Contact Name</div>
-              <div>Jane Doe</div>
+              <div>{userData.emergencyContactName}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Relationship</div>
-              <div>Spouse</div>
+              <div>{userData.emergencyContactRelation}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Contact Number</div>
-              <div>+234 XXX XXX XXXX</div>
-            </div>
-          </div>
-        </section>
-
-        {/* 8. Membership Engagement */}
-        <section className="bg-white rounded-xl p-6 shadow-sm">
-          <h2 className="text-xl font-semibold mb-4">Membership Engagement</h2>
-          <div className="grid grid-cols-2 gap-6">
-            <div>
-              <div className="text-sm text-gray-500 mb-1">Volunteer Interest</div>
-              <div>Yes</div>
+              <div>{userData.emergencyContactPhone}</div>
             </div>
           </div>
         </section>
@@ -237,14 +265,11 @@ export default function ProfilePage() {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="text-sm text-gray-500 mb-1">Wallet Name</div>
-              <div>AnakinPay Wallet</div>
+              <div>{userData.walletName}</div>
             </div>
             <div>
-              <div className="text-sm text-gray-500 mb-1">Bank Statement</div>
-              <div className="flex items-center gap-2">
-                <Upload className="w-4 h-4 text-gray-400" />
-                Bank_Statement.pdf
-              </div>
+              <div className="text-sm text-gray-500 mb-1">Bank Account Details</div>
+              <div>{userData.bankAccountDetails}</div>
             </div>
           </div>
         </section>
@@ -255,11 +280,11 @@ export default function ProfilePage() {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <div className="text-sm text-gray-500 mb-1">Referral Code</div>
-              <div>REF123456</div>
+              <div>{userData.referralCode}</div>
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-1">Preferred Communication</div>
-              <div>Email</div>
+              <div>{userData.communicationPreference}</div>
             </div>
           </div>
         </section>

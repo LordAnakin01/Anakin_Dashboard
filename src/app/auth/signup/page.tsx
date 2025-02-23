@@ -15,7 +15,6 @@ function SignUpContent() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [buttonPosition, setButtonPosition] = useState('shiftLeft')
   const [message, setMessage] = useState('')
   const btnRef = useRef<HTMLButtonElement>(null)
   const router = useRouter()
@@ -51,7 +50,13 @@ function SignUpContent() {
         throw error
       }
 
-      router.push('/auth/verify-email')
+      // Show success message before redirecting
+      setMessage('Registration successful! Redirecting to email verification...')
+      
+      // Wait for 1.5 seconds before redirecting
+      setTimeout(() => {
+        router.push(`/auth/verify-email?email=${encodeURIComponent(email)}`)
+      }, 1500)
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message)
@@ -62,24 +67,6 @@ function SignUpContent() {
       setIsLoading(false)
     }
   }
-
-  useEffect(() => {
-    const positions = ['shiftLeft', 'shiftTop', 'shiftRight', 'shiftBottom'];
-    let currentIndex = 0;
-    
-    if (!email || !password || !name || !confirmPassword || password !== confirmPassword) {
-      const interval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % positions.length;
-        setButtonPosition(positions[currentIndex]);
-        setMessage(password !== confirmPassword ? 'Passwords do not match' : 'Please fill in all fields before proceeding');
-      }, 2000);
-      
-      return () => clearInterval(interval);
-    } else {
-      setButtonPosition('noShift');
-      setMessage('Great! Now you can proceed');
-    }
-  }, [email, password, name, confirmPassword]);
 
   return (
     <div className={`${styles.mainContainer} ${styles.centeredFlex}`}>
@@ -92,72 +79,74 @@ function SignUpContent() {
           <h2 className={styles.title}>Create Account</h2>
           
           {(error || message) && (
-            <p className={styles.msg} style={{ color: error ? '#fa2929' : message.includes('Great') ? '#92ff92' : '#fa2929' }}>
+            <p className={styles.msg} style={{ color: error ? '#fa2929' : message.includes('successful') ? '#92ff92' : '#fa2929' }}>
               {error || message}
             </p>
           )}
 
-          <div className={styles.field}>
-            <input
-              type="text"
-              id="name"
-              className={styles.input}
-              placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <i className={`fa fa-user ${styles.fieldIcon}`}></i>
-          </div>
+          <div className={styles.inputGroup}>
+            <div className={styles.field}>
+              <input
+                type="text"
+                id="name"
+                className={styles.input}
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <i className={`fa fa-user ${styles.fieldIcon}`}></i>
+            </div>
 
-          <div className={styles.field}>
-            <input
-              type="email"
-              id="email"
-              className={styles.input}
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <i className={`fa fa-envelope ${styles.fieldIcon}`}></i>
-          </div>
+            <div className={styles.field}>
+              <input
+                type="email"
+                id="email"
+                className={styles.input}
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <i className={`fa fa-envelope ${styles.fieldIcon}`}></i>
+            </div>
 
-          <div className={styles.field}>
-            <input
-              type="password"
-              id="password"
-              className={styles.input}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={6}
-            />
-            <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
-          </div>
-          <p className={styles.hint}>Must be at least 6 characters long</p>
+            <div className={styles.field}>
+              <input
+                type="password"
+                id="password"
+                className={styles.input}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={6}
+              />
+              <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
+            </div>
+            <p className={styles.hint}>Must be at least 6 characters long</p>
 
-          <div className={styles.field}>
-            <input
-              type="password"
-              id="confirmPassword"
-              className={styles.input}
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              minLength={6}
-            />
-            <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
+            <div className={styles.field}>
+              <input
+                type="password"
+                id="confirmPassword"
+                className={styles.input}
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                minLength={6}
+              />
+              <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
+            </div>
+            <p className={styles.hint}>Must match the password above</p>
           </div>
-          <p className={styles.hint}>Must match the password above</p>
 
           <div className={styles.btnContainer}>
             <button
               ref={btnRef}
               type="submit"
-              className={`${styles.signupBtn} ${styles[buttonPosition]}`}
+              className={styles.signupBtn}
               disabled={!email || !password || !name || !confirmPassword || password !== confirmPassword || isLoading}
             >
               {isLoading ? 'Creating account...' : 'Create account'}

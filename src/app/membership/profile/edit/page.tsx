@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ArrowLeft, Upload } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getSupabaseClient } from '@/lib/supabase'
 
 interface FormData {
   // 1. Personal Details
@@ -87,6 +88,7 @@ interface FormData {
 }
 
 export default function EditProfilePage() {
+  const supabase = getSupabaseClient()
   const [formData, setFormData] = useState<FormData>({
     // 1. Personal Details
     fullName: '',
@@ -159,6 +161,79 @@ export default function EditProfilePage() {
     termsAgreement: false
   })
 
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        if (!supabase) {
+          throw new Error('Could not initialize Supabase client')
+          return
+        }
+
+        const { data: { user }, error: userError } = await supabase.auth.getUser()
+        if (userError) {
+          console.error('Error fetching user:', userError)
+          return
+        }
+
+        if (!user) {
+          console.error('No user found')
+          return
+        }
+
+        // Get profile data
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single()
+
+        if (profileError) {
+          console.error('Error fetching profile:', profileError)
+          return
+        }
+
+        if (profile) {
+          setFormData(prev => ({
+            ...prev,
+            fullName: profile.full_name || user.user_metadata?.full_name || '',
+            email: user.email || '',
+            dateOfBirth: profile.date_of_birth || '',
+            gender: profile.gender || '',
+            nationality: profile.nationality || '',
+            phoneNumber: profile.phone_number || '',
+            residentialAddress: profile.residential_address || '',
+            employmentStatus: profile.employment_status || '',
+            employerName: profile.employer_name || '',
+            industry: profile.industry || '',
+            jobTitle: profile.job_title || '',
+            workAddress: profile.work_address || '',
+            startDate: profile.start_date || '',
+            endDate: profile.end_date || '',
+            monthlySalary: profile.monthly_salary || '',
+            reasonForLeaving: profile.reason_for_leaving || '',
+            educationLevel: profile.education_level || '',
+            institution: profile.institution || '',
+            fieldOfStudy: profile.field_of_study || '',
+            certifications: profile.certifications || [],
+            skills: profile.skills || [],
+            emergencyContactName: profile.emergency_contact_name || '',
+            emergencyContactRelation: profile.emergency_contact_relation || '',
+            emergencyContactPhone: profile.emergency_contact_phone || '',
+            membershipTier: profile.membership_tier || '',
+            walletName: profile.wallet_name || '',
+            bankAccountDetails: profile.bank_account_details || '',
+            referralCode: profile.referral_code || '',
+            communicationPreference: profile.communication_preference || ''
+          }))
+        }
+      } catch (error) {
+        console.error('Error in loadUserData:', error)
+      }
+    }
+
+    loadUserData()
+  }, [supabase])
+
   const industries = [
     'AnakinExpress - Logistics & Supply Chain',
     'AnakinTech - Technology Solutions',
@@ -192,8 +267,85 @@ export default function EditProfilePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement form submission logic
-    console.log('Form submitted:', formData)
+    
+    try {
+      if (!supabase) {
+        throw new Error('Could not initialize Supabase client')
+      }
+
+      const { data: { user }, error: userError } = await supabase.auth.getUser()
+      if (userError) throw userError
+
+      if (!user) {
+        throw new Error('No user found')
+      }
+
+      // Update user profile
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .update({
+          full_name: formData.fullName,
+          date_of_birth: formData.dateOfBirth,
+          gender: formData.gender,
+          nationality: formData.nationality,
+          phone_number: formData.phoneNumber,
+          residential_address: formData.residentialAddress,
+          employment_status: formData.employmentStatus,
+          employer_name: formData.employerName,
+          industry: formData.industry,
+          job_title: formData.jobTitle,
+          work_address: formData.workAddress,
+          start_date: formData.startDate,
+          end_date: formData.endDate,
+          monthly_salary: formData.monthlySalary,
+          reason_for_leaving: formData.reasonForLeaving,
+          education_level: formData.educationLevel,
+          institution: formData.institution,
+          field_of_study: formData.fieldOfStudy,
+          certifications: formData.certifications,
+          skills: formData.skills,
+          emergency_contact_name: formData.emergencyContactName,
+          emergency_contact_relation: formData.emergencyContactRelation,
+          emergency_contact_phone: formData.emergencyContactPhone,
+          membership_tier: formData.membershipTier,
+          wallet_name: formData.walletName,
+          bank_account_details: formData.bankAccountDetails,
+          referral_code: formData.referralCode,
+          communication_preference: formData.communicationPreference,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', user.id)
+
+      if (profileError) throw profileError
+
+      // Handle file uploads if any files were selected
+      if (formData.identitySelfie) {
+        const { error: avatarError } = await supabase.storage
+          .from('avatars')
+          .upload(`${user.id}/profile-picture`, formData.identitySelfie)
+        
+        if (avatarError) throw avatarError
+
+        // Get the public URL of the uploaded avatar
+        const { data: { publicUrl } } = await supabase.storage
+          .from('avatars')
+          .getPublicUrl(`${user.id}/profile-picture`)
+
+        // Update the profile with the avatar URL
+        const { error: updateError } = await supabase
+          .from('profiles')
+          .update({ avatar_url: publicUrl })
+          .eq('id', user.id)
+
+        if (updateError) throw updateError
+      }
+
+      // Redirect to profile page
+      window.location.href = '/membership/profile'
+    } catch (error) {
+      console.error('Error saving profile:', error)
+      alert('Failed to save changes. Please try again.')
+    }
   }
 
   return (
@@ -263,9 +415,8 @@ export default function EditProfilePage() {
                 type="text"
                 name="fullName"
                 value={formData.fullName}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black/5"
+                readOnly
+                className="w-full px-4 py-2 border border-gray-200 rounded-xl bg-gray-50 cursor-not-allowed"
               />
             </div>
             <div>
@@ -332,9 +483,8 @@ export default function EditProfilePage() {
                 type="email"
                 name="email"
                 value={formData.email}
-                onChange={handleInputChange}
-                required
-                className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black/5"
+                readOnly
+                className="w-full px-4 py-2 border border-gray-200 rounded-xl bg-gray-50 cursor-not-allowed"
               />
             </div>
             <div className="col-span-2">
@@ -711,13 +861,11 @@ export default function EditProfilePage() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-black/5"
               >
                 <option value="">Select Industry</option>
-                <option value="finance">Finance</option>
-                <option value="technology">Technology</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="manufacturing">Manufacturing</option>
-                <option value="education">Education</option>
-                <option value="logistics">Logistics</option>
-                <option value="other">Other</option>
+                {industries.map((industry) => (
+                  <option key={industry} value={industry}>
+                    {industry}
+                  </option>
+                ))}
               </select>
             </div>
             <div>

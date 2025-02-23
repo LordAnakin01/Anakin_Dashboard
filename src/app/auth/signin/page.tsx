@@ -13,7 +13,6 @@ function SignInContent() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [buttonPosition, setButtonPosition] = useState('shiftLeft')
   const [message, setMessage] = useState('')
   const btnRef = useRef<HTMLButtonElement>(null)
   const router = useRouter()
@@ -51,7 +50,13 @@ function SignInContent() {
         console.log('Sign in successful:', { user: data.user?.id })
       }
 
-      router.push(redirect || '/dashboard')
+      // Show success message before redirecting
+      setMessage('Sign in successful! Redirecting...')
+      
+      // Wait for 1.5 seconds before redirecting
+      setTimeout(() => {
+        router.push(redirect || '/dashboard')
+      }, 1500)
     } catch (error) {
       console.error('Sign in error:', error)
       if (error instanceof Error) {
@@ -64,24 +69,6 @@ function SignInContent() {
     }
   }
 
-  useEffect(() => {
-    const positions = ['shiftLeft', 'shiftTop', 'shiftRight', 'shiftBottom'];
-    let currentIndex = 0;
-    
-    if (!email || !password) {
-      const interval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % positions.length;
-        setButtonPosition(positions[currentIndex]);
-        setMessage('Please fill in all fields before proceeding');
-      }, 2000);
-      
-      return () => clearInterval(interval);
-    } else {
-      setButtonPosition('noShift');
-      setMessage('Great! Now you can proceed');
-    }
-  }, [email, password]);
-
   return (
     <div className={`${styles.mainContainer} ${styles.centeredFlex}`}>
       <div className={styles.formContainer}>
@@ -93,35 +80,37 @@ function SignInContent() {
           <h2 className={styles.title}>Sign In</h2>
           
           {(error || message) && (
-            <p className={styles.msg} style={{ color: error ? '#fa2929' : message.includes('Great') ? '#92ff92' : '#fa2929' }}>
+            <p className={styles.msg} style={{ color: error ? '#fa2929' : message.includes('successful') ? '#92ff92' : '#fa2929' }}>
               {error || message}
             </p>
           )}
 
-          <div className={styles.field}>
-            <input
-              type="email"
-              id="email"
-              className={styles.input}
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <i className={`fa fa-user ${styles.fieldIcon}`}></i>
-          </div>
+          <div className={styles.inputGroup}>
+            <div className={styles.field}>
+              <input
+                type="email"
+                id="email"
+                className={styles.input}
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <i className={`fa fa-user ${styles.fieldIcon}`}></i>
+            </div>
 
-          <div className={styles.field}>
-            <input
-              type="password"
-              id="password"
-              className={styles.input}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
+            <div className={styles.field}>
+              <input
+                type="password"
+                id="password"
+                className={styles.input}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <i className={`fa fa-lock ${styles.fieldIcon}`}></i>
+            </div>
           </div>
 
           <div className={styles.action}>
@@ -137,7 +126,7 @@ function SignInContent() {
             <button
               ref={btnRef}
               type="submit"
-              className={`${styles.loginBtn} ${styles[buttonPosition]}`}
+              className={styles.loginBtn}
               disabled={!email || !password || isLoading}
             >
               {isLoading ? 'Signing in...' : 'Sign in'}
