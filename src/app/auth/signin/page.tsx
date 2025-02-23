@@ -30,24 +30,34 @@ function SignInContent() {
     try {
       const supabase = getSupabaseClient()
       if (!supabase) {
-        throw new Error('Unable to initialize Supabase client')
+        throw new Error('Could not initialize Supabase client. Please check your environment variables.')
       }
 
-      const { error } = await supabase.auth.signInWithPassword({
+      // Debug logging for development
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Attempting sign in with:', { email })
+      }
+
+      const { error: signInError, data } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
 
-      if (error) {
-        throw error
+      if (signInError) {
+        throw signInError
+      }
+
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Sign in successful:', { user: data.user?.id })
       }
 
       router.push(redirect || '/dashboard')
     } catch (error) {
+      console.error('Sign in error:', error)
       if (error instanceof Error) {
         setError(error.message)
       } else {
-        setError('An unexpected error occurred')
+        setError('An unexpected error occurred during sign in')
       }
     } finally {
       setIsLoading(false)

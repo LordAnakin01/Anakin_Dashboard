@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Header from "@/components/layout/Header";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,10 +12,18 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "The Anakin Dynasty",
   description: "Employee Dashboard with Onboarding & Time Tracking Interface",
-  viewport: "width=device-width, initial-scale=1",
   icons: {
-    icon: "/favicon.ico",
+    icon: '/favicon.ico',
+    apple: '/logo.png',
+    shortcut: '/favicon.ico'
   },
+  manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -24,7 +33,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
+      <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+      </head>
       <body className="h-full bg-gray-50 antialiased">
+        <Header />
         {children}
       </body>
     </html>

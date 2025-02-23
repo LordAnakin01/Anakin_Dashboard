@@ -2,36 +2,24 @@
 
 import { ArrowRight, Check, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
+import HomeHeader from '@/components/layout/HomeHeader'
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#F5F5F5]">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-[60px] bg-white/40 backdrop-blur-xl border-b border-white/20 z-50">
-        <div className="max-w-[1400px] mx-auto h-full px-6 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold hover:opacity-80 transition-opacity">
-            The Anakin Dynasty
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link
-              href="/auth/signin"
-              className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Sign in
-            </Link>
-            <Link
-              href="/auth/signup"
-              className="px-4 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </header>
-
+      <HomeHeader />
       {/* Hero Section */}
-      <section className="pt-[120px] pb-20 bg-gradient-to-b from-red-100 to-white">
-        <div className="max-w-[1400px] mx-auto px-6">
+      <section className="relative pt-[120px] pb-20 bg-gradient-to-b from-red-100 to-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/warehouse-automation.jpg"
+            alt="Warehouse Automation"
+            fill
+            className="object-cover opacity-20"
+          />
+        </div>
+        <div className="max-w-[1400px] mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl font-bold mb-6">
               Revolutionizing industries, transforming lives
@@ -55,6 +43,42 @@ export default function LandingPage() {
               >
                 Explore Our Ecosystem
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation Showcase */}
+      <section className="py-20 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="relative h-[400px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/smart-city.jpg"
+                alt="Smart City Infrastructure"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <h2 className="text-3xl font-bold mb-6">Building Tomorrow's Infrastructure</h2>
+              <p className="text-gray-600 mb-8">
+                Our commitment to innovation extends beyond traditional boundaries. Through cutting-edge 
+                technology and sustainable practices, we're creating smart cities and intelligent 
+                infrastructure that will shape the future of urban living.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-gray-50 rounded-xl">
+                  <div className="text-2xl mb-2">🏗️</div>
+                  <h3 className="font-semibold mb-1">Smart Infrastructure</h3>
+                  <p className="text-sm text-gray-600">IoT-enabled systems for efficient city management</p>
+                </div>
+                <div className="p-4 bg-gray-50 rounded-xl">
+                  <div className="text-2xl mb-2">🤖</div>
+                  <h3 className="font-semibold mb-1">Automation</h3>
+                  <p className="text-sm text-gray-600">Advanced robotics and AI-driven solutions</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -114,7 +138,18 @@ export default function LandingPage() {
       <section className="py-20 bg-white">
         <div className="max-w-[1400px] mx-auto px-6">
           <h2 className="text-3xl font-bold text-center mb-12">Our Core Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="relative h-[300px] md:col-span-3 rounded-2xl overflow-hidden mb-8">
+              <Image
+                src="/images/logistics-hub.jpg"
+                alt="Logistics and Transportation Hub"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <h3 className="text-3xl font-bold text-white">Integrated Solutions for Tomorrow</h3>
+              </div>
+            </div>
             {services.map((service, index) => (
               <div key={index} className="p-6 bg-gray-50 rounded-2xl">
                 <div className="flex items-center gap-3 mb-4">
@@ -195,18 +230,28 @@ export default function LandingPage() {
               <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#about" className="text-gray-400 hover:text-white transition-colors">
+                  <Link href="/home/achievements" className="text-gray-400 hover:text-white transition-colors">
+                    Achievements
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/home/roadmap" className="text-gray-400 hover:text-white transition-colors">
+                    Roadmap
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/home/contactus" className="text-gray-400 hover:text-white transition-colors">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/home/aboutus" className="text-gray-400 hover:text-white transition-colors">
                     About Us
                   </Link>
                 </li>
                 <li>
                   <Link href="#ecosystem" className="text-gray-400 hover:text-white transition-colors">
                     Our Ecosystem
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
-                    Blog
                   </Link>
                 </li>
               </ul>
