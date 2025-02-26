@@ -216,6 +216,75 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Partnerships Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative h-[500px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/partnership.jpg"
+                alt="The Anakin Dynasty Partnerships"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold mb-8">Partnerships that Drive Impact</h2>
+              <div className="prose prose-lg">
+                <p className="mb-6">
+                  At The Anakin Dynasty Limited, collaboration is at the heart of our vision. In partnership with over 150 companies across our diverse ecosystem, we are not just creating jobs—we are building industries, shaping economies, and fostering innovation. From technology and finance to logistics, manufacturing, and defense, our ecosystem is designed to provide endless opportunities for individuals and businesses alike. Whether you're a service provider, manufacturer, or entrepreneur, there's a place for you in our growing network.
+                </p>
+                <p>
+                  Through these partnerships, we ensure inclusivity at every level, empowering individuals with meaningful employment and enabling businesses to thrive in a future-driven marketplace. Join us as we transform industries, empower people, and pioneer innovation on a global scale.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Anakin Credits Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-8">Anakin Credits (ACR): The Future of Digital Transactions</h2>
+              <div className="prose prose-lg">
+                <p className="mb-6">
+                  At the core of The Anakin Dynasty's financial revolution is Anakin Credits (ACR)—a next-generation digital currency developed through The Anakin Bureau of Credit. Powered by our custom-built blockchain infrastructure, ACR is designed to seamlessly facilitate transactions across our entire ecosystem, unlocking new possibilities in finance, commerce, and beyond.
+                </p>
+                <p className="mb-6">
+                  From IoT-driven automation to cashless payments in retail, logistics, and services, ACR serves as the backbone of a fully integrated digital economy. Whether you're shopping on AnakinThreads, fueling up at AnakinFuel stations, or leveraging our logistics and fintech solutions, ACR ensures fast, secure, and efficient transactions across all platforms.
+                </p>
+                <p className="mb-6">
+                  With smart contracts, enhanced security, and global scalability, ACR is more than just a currency—it's a catalyst for financial evolution, redefining how businesses and individuals engage in digital commerce.
+                </p>
+                <p className="text-xl font-medium mt-8 mb-8">
+                  Embrace the future with Anakin Credits (ACR)—where speed, security, and innovation converge to power the next era of financial transactions.
+                </p>
+                <a
+                  href="https://www.theanakincredits.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors"
+                >
+                  Learn more about ACR
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+            <div className="relative h-[500px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/digital-currency.jpg"
+                alt="Anakin Credits Digital Currency"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-12 bg-black text-white">
         <div className="max-w-[1400px] mx-auto px-6">
