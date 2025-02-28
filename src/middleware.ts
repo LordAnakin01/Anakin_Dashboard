@@ -4,6 +4,7 @@ import type { NextRequest } from 'next/server'
 import type { CookieOptions } from '@supabase/ssr'
 
 const protectedRoutes = [
+  '/portal/user',
   '/apps',
   '/membership',
   '/jobs',
@@ -49,8 +50,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/home', request.url))
   }
 
-  // Allow access to home page and auth routes
-  if (request.nextUrl.pathname === '/home' || request.nextUrl.pathname.startsWith('/auth/')) {
+  // Allow access to portal landing page
+  if (request.nextUrl.pathname === '/portal') {
+    return response
+  }
+
+  // Allow access to portal auth routes
+  if (request.nextUrl.pathname.startsWith('/portal/auth/')) {
+    // If user is already signed in and trying to access auth pages, redirect to user dashboard
+    if (session) {
+      return NextResponse.redirect(new URL('/portal/user', request.url))
+    }
     return response
   }
 
@@ -61,8 +71,8 @@ export async function middleware(request: NextRequest) {
   )
 
   if (isProtectedRoute && !session) {
-    // Redirect to sign in if accessing protected route without session
-    const redirectUrl = new URL('/auth/signin', request.url)
+    // Redirect to portal sign in if accessing protected route without session
+    const redirectUrl = new URL('/portal/auth/signin', request.url)
     redirectUrl.searchParams.set('redirect', request.nextUrl.pathname)
     return NextResponse.redirect(redirectUrl)
   }

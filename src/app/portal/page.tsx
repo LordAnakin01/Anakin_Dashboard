@@ -52,9 +52,6 @@ export default function PortalPage() {
                             <li className="nav-item">
                                 <a href="#contact" className="nav-link">Contact</a>
                             </li>
-                            <li className="nav-item">
-                                <a href="/auth/signin" className="nav-link">Login</a>
-                            </li>
                         </ul>
                     </div>
 
@@ -64,6 +61,18 @@ export default function PortalPage() {
                             className="btn btn-light px-4 py-2 rounded-xl text-decoration-none d-none d-lg-block"
                         >
                             Back to Home
+                        </Link>
+                        <Link 
+                            href="/portal/auth/signin" 
+                            className="btn btn-primary px-4 py-2 rounded-xl text-decoration-none d-none d-lg-block"
+                        >
+                            Sign In
+                        </Link>
+                        <Link 
+                            href="/portal/auth/signup" 
+                            className="btn btn-success px-4 py-2 rounded-xl text-decoration-none d-none d-lg-block"
+                        >
+                            Sign Up
                         </Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <i className="mdi mdi-menu"></i>
@@ -83,8 +92,13 @@ export default function PortalPage() {
                             <div className="home-title text-center align-self-center">
                                 <h1 className="pt-2">Welcome to The Anakin Dynasty Portal</h1>
                                 <h5 className="home-desc pt-4 mx-auto">Your gateway to exclusive membership benefits, resources, and opportunities.</h5>
-                                <div className="mt-5">
-                                    <a href="/auth/signin" className="btn btn-light btn-lg px-4">Get Started Now</a>
+                                <div className="mt-5 space-x-4">
+                                    <Link href="/portal/auth/signin" className="btn btn-primary btn-lg px-4">
+                                        Sign In
+                                    </Link>
+                                    <Link href="/portal/auth/signup" className="btn btn-success btn-lg px-4">
+                                        Sign Up
+                                    </Link>
                                 </div>
                             </div>
                         </div>
