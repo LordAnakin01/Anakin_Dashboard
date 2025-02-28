@@ -55,7 +55,7 @@ function SignInContent() {
       
       // Wait for 1.5 seconds before redirecting
       setTimeout(() => {
-        router.push(redirect || '/dashboard')
+        router.push(redirect || '/portal/user')
       }, 1500)
     } catch (error) {
       console.error('Sign in error:', error)
@@ -117,7 +117,7 @@ function SignInContent() {
             <label>
               <input type="checkbox" /> Remember me
             </label>
-            <Link href="/auth/reset-password" className={styles.link}>
+            <Link href="/portal/auth/reset-password" className={styles.link}>
               Forgot Password?
             </Link>
           </div>
@@ -135,7 +135,7 @@ function SignInContent() {
 
           <p className={styles.signup}>
             Don&apos;t have an account?{' '}
-            <Link href="/auth/signup" className={styles.link}>
+            <Link href="/portal/auth/signup" className={styles.link}>
               Sign up
             </Link>
           </p>

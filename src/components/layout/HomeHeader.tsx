@@ -52,12 +52,6 @@ export default function HomeHeader() {
           </nav>
           <div className="flex items-center gap-4">
             <Link
-              href="/auth/signin"
-              className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Sign in
-            </Link>
-            <Link
               href="/portal"
               className="px-4 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors"
             >
@@ -107,12 +101,6 @@ export default function HomeHeader() {
                 Contact Us
               </Link>
               <div className="h-px bg-black/5 my-2" />
-              <Link
-                href="/auth/signin"
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-black/5 rounded-xl transition-colors"
-              >
-                Sign in
-              </Link>
               <Link
                 href="/portal"
                 className="px-4 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors text-center"

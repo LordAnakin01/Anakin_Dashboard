@@ -26,7 +26,7 @@ export default function VerifyEmailContent() {
         
         if (user?.email_confirmed_at) {
           // Email is verified, redirect to dashboard
-          router.push('/dashboard')
+          router.push('/portal/user')
         }
       } catch (err) {
         console.error('Error checking email verification:', err)
@@ -120,7 +120,7 @@ export default function VerifyEmailContent() {
             </button>
 
             <Link 
-              href="/auth/signin" 
+              href="/portal/auth/signin" 
               className={styles.signinBtn}
             >
               <span>Sign In</span>

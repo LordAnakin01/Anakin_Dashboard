@@ -63,13 +63,13 @@ export default function PortalPage() {
                             Back to Home
                         </Link>
                         <Link 
-                            href="/portal/auth/signin" 
+                            href="/portal/auth/signin?redirect=/portal/user" 
                             className="btn btn-primary px-4 py-2 rounded-xl text-decoration-none d-none d-lg-block"
                         >
                             Sign In
                         </Link>
                         <Link 
-                            href="/portal/auth/signup" 
+                            href="/portal/auth/signup?redirect=/portal/user" 
                             className="btn btn-success px-4 py-2 rounded-xl text-decoration-none d-none d-lg-block"
                         >
                             Sign Up
@@ -93,10 +93,10 @@ export default function PortalPage() {
                                 <h1 className="pt-2">Welcome to The Anakin Dynasty Portal</h1>
                                 <h5 className="home-desc pt-4 mx-auto">Your gateway to exclusive membership benefits, resources, and opportunities.</h5>
                                 <div className="mt-5 space-x-4">
-                                    <Link href="/portal/auth/signin" className="btn btn-primary btn-lg px-4">
+                                    <Link href="/portal/auth/signin?redirect=/portal/user" className="btn btn-primary btn-lg px-4">
                                         Sign In
                                     </Link>
-                                    <Link href="/portal/auth/signup" className="btn btn-success btn-lg px-4">
+                                    <Link href="/portal/auth/signup?redirect=/portal/user" className="btn btn-success btn-lg px-4">
                                         Sign Up
                                     </Link>
                                 </div>

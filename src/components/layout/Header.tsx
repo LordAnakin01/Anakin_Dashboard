@@ -10,14 +10,14 @@ import { getSupabaseClient } from '@/lib/supabase'
 export default function Header() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const pathname = usePathname()
-  const isAuthPage = pathname?.startsWith('/auth/')
+  const isAuthPage = pathname?.startsWith('/portal/auth/')
 
   const handleSignOut = async () => {
     const supabase = getSupabaseClient()
     if (!supabase) return
     
     await supabase.auth.signOut()
-    window.location.href = '/auth/signin'
+    window.location.href = '/portal/auth/signin'
   }
 
   if (isAuthPage) return null

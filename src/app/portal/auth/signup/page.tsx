@@ -55,7 +55,7 @@ function SignUpContent() {
       
       // Wait for 1.5 seconds before redirecting
       setTimeout(() => {
-        router.push(`/auth/verify-email?email=${encodeURIComponent(email)}`)
+        router.push(`/portal/auth/verify-email?email=${encodeURIComponent(email)}`)
       }, 1500)
     } catch (error) {
       if (error instanceof Error) {
@@ -155,7 +155,7 @@ function SignUpContent() {
 
           <p className={styles.signin}>
             Already have an account?{' '}
-            <Link href="/auth/signin" className={styles.link}>
+            <Link href="/portal/auth/signin" className={styles.link}>
               Sign in
             </Link>
           </p>

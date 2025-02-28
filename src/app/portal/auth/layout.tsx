@@ -13,14 +13,14 @@ export default function AuthLayout({
     <div className="min-h-screen bg-black relative">
       <div className="absolute top-4 left-4 flex items-center gap-4">
         <Link
-          href="/home"
+          href="/portal"
           className="text-gray-400 hover:text-white flex items-center gap-2 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Home</span>
+          <span>Back to Portal</span>
         </Link>
         <div className="w-px h-6 bg-gray-800" />
-        <Link href="/home" className="flex items-center gap-2">
+        <Link href="/portal" className="flex items-center gap-2">
           <Image
             src="/logo.png"
             alt="Anakin Dynasty Logo"

@@ -98,7 +98,7 @@ export default function AboutPage() {
             </p>
             <div className="flex items-center justify-center gap-4">
               <Link
-                href="/auth/signup"
+                href="/portal"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors"
               >
                 Get Involved
