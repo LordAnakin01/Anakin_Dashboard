@@ -1,6 +1,6 @@
-/* Theme Name:  Amezia - Admin Dashboard & Landing Template
-   Author: Themesbrand
-   Version: 2.0.0
+/* The Anakin Dynasty - Portal & Landing Template
+   Author: The Anakin Dynasty
+   Version: 1.0.0
    File Description: Main JS file of the template
 */
 
@@ -17,7 +17,6 @@ function windowScroll() {
         navbar.classList.remove("nav-sticky");
     }
 }
-
 
 window.addEventListener('scroll', (ev) => {
     ev.preventDefault();
