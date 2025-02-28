@@ -1,0 +1,146 @@
+@@include("partials/main.html")
+
+    <head>
+
+        @@include("partials/title-meta.html", {"title": "Pricing"})
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+        
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"Pages",
+                        "title": "Pricing"})
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="pricingTable">
+                                            <span class="pricing-icon"><i
+                                                    class="fa fa-user bg-primary text-white"></i></span>
+                                            <h6 class="title py-3 m-0 text-primary text-uppercase ">Free plan</h6>
+                                            <h3 class="amount">$00<small class="font-size-12 text-muted">/15Days</small>
+                                            </h3>
+
+                                            <div class="my-3 py-2">
+                                                <p>08GB Disk Space</p>
+                                                <p>08 Email Accounts</p>
+                                                <p>2GB Monthly Bandwidth</p>
+                                                <p>06 Subdomains</p>
+                                                <p>2 Domains</p>
+                                            </div>
+
+                                            <a href="#" class="btn btn-primary btn-lg  btn-rounded w-100">Sign Up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="pricingTable">
+                                            <span class="pricing-icon"><i
+                                                    class="fa fa-rocket bg-dark text-light"></i></span>
+                                            <h6 class="title py-3 m-0 text-dark text-uppercase">Basic plan</h6>
+                                            <h3 class="amount font-24">$39<small
+                                                    class="font-size-12 text-muted">/month</small></h3>
+                                            <div class="my-3 py-2">
+                                                <p>30GB Disk Space</p>
+                                                <p>30 Email Accounts</p>
+                                                <p>30GB Monthly Bandwidth</p>
+                                                <p>10 Subdomains</p>
+                                                <p>10 Domains</p>
+                                            </div>
+                                            <a href="#" class="btn btn-dark btn-lg  btn-rounded w-100">Sign Up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="pricingTable">
+                                            <span class="pricing-icon"><i
+                                                    class="fa fa-envelope bg-pink text-white"></i></span>
+                                            <h6 class="title py-3 m-0 text-pink text-uppercase">Premium plan</h6>
+                                            <h3 class="amount">$49<small class="font-size-12 text-muted">/month</small></h3>
+                                            <div class="my-3 py-2">
+                                                <p>50GB Disk Space</p>
+                                                <p>50 Email Accounts</p>
+                                                <p>50GB Monthly Bandwidth</p>
+                                                <p>15 Subdomains</p>
+                                                <p>15 Domains</p>
+                                            </div>
+                                            <a href="#" class="btn btn-pink btn-lg  btn-rounded w-100">Sign Up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="pricingTable">
+                                            <span class="pricing-icon"><i
+                                                    class="fa fa-umbrella bg-purple text-white"></i></span>
+                                            <h6 class="title py-3 m-0 text-purple text-uppercase">Plus plan</h6>
+                                            <h3 class="amount">$59<small class="font-size-12 text-muted">/month</small></h3>
+                                            <div class="my-3 py-2">
+                                                <p>80GB Disk Space</p>
+                                                <p>80 Email Accounts</p>
+                                                <p>80GB Monthly Bandwidth</p>
+                                                <p>20 Subdomains</p>
+                                                <p>20 Domains</p>
+                                            </div>
+                                            <a href="#" class="btn btn-purple btn-lg  btn-rounded w-100">Sign Up</a>
+                                        </div>
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+
+</html>

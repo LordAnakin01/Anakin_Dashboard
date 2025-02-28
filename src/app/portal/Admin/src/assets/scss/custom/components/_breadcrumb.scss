@@ -1,0 +1,39 @@
+
+// 
+// breadcrumb.scss
+//
+
+
+// Breadcrumb item arrow
+.breadcrumb-item {
+    > a {
+        color: var(--#{$prefix}secondary-color);
+    }
+    +.breadcrumb-item {
+        &::before {
+            color:  var(--#{$prefix}secondary-color);
+            content: "\F0142";
+            font-family: 'Material Design Icons';
+            font-weight: 700;
+        }
+    }
+}
+.breadcrumb-item{
+&.active{
+  color: var(--#{$prefix}emphasis-color);
+
+}
+}
+// RTL
+
+[dir="ltr"] {
+    .breadcrumb-item {
+    
+      + .breadcrumb-item {
+        &::before {
+          content: "\f0141" !important;
+          font-family: "Material Design Icons";
+        }
+      }
+    }
+  }

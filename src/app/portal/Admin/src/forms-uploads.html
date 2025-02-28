@@ -1,0 +1,130 @@
+@@include("partials/main.html")
+
+    <head>
+        
+        @@include("partials/title-meta.html", {"title": "Form File Upload"})
+
+        
+        <!-- Plugins css -->
+        <link href="assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+    
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"Forms", "title": "Form File Upload"})
+
+
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h5 class="card-title">Dropzone</h5>
+                                        <p class="card-title-desc">DropzoneJS is an open source library
+                                            that provides drag’n’drop file uploads with image previews.
+                                        </p>
+        
+                                        <div class="mb-4">
+                                            <form action="#" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple="multiple">
+                                                </div>
+                                            </form>
+                                        </div>
+        
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-primary waves-effect waves-light">Send Files</button>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                        
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">File Upload 1</h5>
+                                        <p class="card-title-desc">Your so fresh input file — Default version</p>
+                                        <input type="file" id="input-file-now" class="dropify" />                                                   
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">File Upload 2</h5>
+                                        <p class="card-title-desc">You can add a default value</p>
+                                        <input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="assets/images/small/img-1.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">File Upload 3</h5>
+                                        <p class="card-title-desc">You can set the height</p>
+                                        <input type="file" id="input-file-now-custom-2" class="dropify" data-height="500" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="header-title">File Upload 4</h5>
+                                        <p class="card-title-desc">You can combine options</p>
+                                        <input type="file" id="input-file-now-custom-3" class="dropify" data-height="500" data-default-file="assets/images/small/img-2.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- end row -->
+                        
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+        
+        <!-- Plugins js -->
+        <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+        <script src="assets/libs/dropify/js/dropify.min.js"></script>
+
+        <script src="assets/js/pages/form-fileuploads.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+</html>

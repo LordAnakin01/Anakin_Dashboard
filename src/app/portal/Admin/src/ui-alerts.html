@@ -1,0 +1,354 @@
+@@include("partials/main.html")
+
+    <head>
+
+        @@include("partials/title-meta.html", {"title": "Alerts"})
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+        
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"UI Elements", "title": "Alerts"})
+
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Alerts Examples</h5>
+                                        <p class="card-title-desc">Provide contextual feedback messages for
+                                            typical user actions with the handful of available and flexible alert messages.
+                                        </p>
+
+                                        <div class="">
+                                            <p class="font-size-13 text-secondary">Alert Primary <code>.alert-primary</code>
+                                            </p>
+                                            <div class="alert alert-primary" role="alert">
+                                                This is a primary alert—check it out!
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Secondary
+                                                <code>.alert-secondary</code>
+                                            </p>
+                                            <div class="alert alert-secondary" role="alert">
+                                                This is a secondary alert—check it out!
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Success <code>.alert-success</code>
+                                            </p>
+                                            <div class="alert alert-success" role="alert">
+                                                This is a success alert—check it out!
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Danger <code>.alert-danger</code>
+                                            </p>
+                                            <div class="alert alert-danger mb-0" role="alert">
+                                                This is a danger alert—check it out!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Cardbody -->
+                                </div>
+                                <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Link color</h5>
+                                        <p class="card-title-desc">Use the <code
+                                                class="highlighter-rouge">.alert-link</code> utility class to
+                                            quickly provide matching colored links within any alert.
+                                        </p>
+                                        <div class="">
+                                            <p class="font-size-13 text-secondary">Alert Success <code>.alert-link</code>
+                                            </p>
+                                            <div class="alert alert-success" role="alert">
+                                                This is a success alert with <a href="#" class="alert-link">an example
+                                                    link</a>. Give it a click if you like.
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Danger <code>.alert-link</code></p>
+                                            <div class="alert alert-danger" role="alert">
+                                                This is a danger alert with <a href="#" class="alert-link">an example
+                                                    link</a>. Give it a click if you like.
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Warning <code>.alert-link</code>
+                                            </p>
+                                            <div class="alert alert-warning" role="alert">
+                                                This is a warning alert with <a href="#" class="alert-link">an example
+                                                    link</a>. Give it a click if you like.
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Info <code>.alert-link</code></p>
+                                            <div class="alert alert-info mb-0" role="alert">
+                                                This is a info alert with <a href="#" class="alert-link">an example
+                                                    link</a>. Give it a click if you like.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Cardbody -->
+                                </div>
+                                <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Icon Examples</h5>
+                                        <p class="card-title-desc">Alerts are available for any length of
+                                            text with icon, as well as an optional dismiss button.
+                                        </p>
+                                        <div class="row">
+                                            <div class="col-md-12 col-xl-12">
+                                                <div class="icon-alert">
+                                                    <p class="font-size-13 text-secondary">Alert Success
+                                                        <code>.alert-success</code>
+                                                    </p>
+                                                    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center"
+                                                        role="alert">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                            aria-label="Close"></button>
+                                                        <i class="mdi mdi-check-circle me-2"></i>Success ! Updated members
+                                                        status.
+                                                    </div>
+                                                    <p class="font-size-13 text-secondary">Alert Info
+                                                        <code>.alert-info</code>
+                                                    </p>
+                                                    <div class="alert alert-info alert-dismissible fade show d-flex align-items-center "
+                                                        role="alert">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                            aria-label="Close"></button>
+                                                        <i class="mdi mdi-alert-circle me-2"></i>Info ! User pending action.
+                                                    </div>
+                                                    <p class="font-size-13 text-secondary">Alert Warning
+                                                        <code>.alert-warning</code>
+                                                    </p>
+                                                    <div class="alert alert-warning alert-dismissible fade show d-flex align-items-center"
+                                                        role="alert">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                            aria-label="Close"></button>
+                                                        <i class="mdi mdi-alert me-2"></i>Warning ! User has to be admin.
+                                                    </div>
+                                                    <p class="font-size-13 text-secondary">Alert Danger
+                                                        <code>.alert-danger</code>
+                                                    </p>
+                                                    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center mb-0"
+                                                        role="alert">
+                                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                            aria-label="Close"></button>
+                                                        <i class="mdi mdi-close-circle me-2"></i>Error ! Internal server
+                                                        Error.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Col -->
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dismissing</h5>
+                                        <p class="card-title-desc">You can see this in action with a live demo:</p>
+                                        <div class="">
+                                            <p class="font-size-13 text-secondary">Alert Primary
+                                                <code>.alert-dismissible</code>
+                                            </p>
+                                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                                <strong>Well done!</strong> You successfully read this important alert
+                                                message.
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Info
+                                                <code>.alert-dismissible</code>
+                                            </p>
+                                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                                <strong>Heads up!</strong> This alert needs your attention, but it's not
+                                                super important.
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert success
+                                                <code>.alert-dismissible</code>
+                                            </p>
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                                <strong>Success!</strong> Better check yourself, you're not looking too
+                                                good.
+                                            </div>
+                                            <p class="font-size-13 text-secondary">Alert Light
+                                                <code>.alert-dismissible</code>
+                                            </p>
+                                            <div class="alert alert-light alert-dismissible fade show mb-0" role="alert">
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
+                                                <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!--End Row-->
+
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Alerts Color Examples</h5>
+                                        <p class="card-title-desc">Provide contextual feedback messages for
+                                            typical user actions with the handful of available and flexible alert messages.
+                                        </p>
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-6">
+                                                <p class="font-size-13 text-secondary">Alert Primary
+                                                    <code>.alert-primary .bg-primary .border-0</code>
+                                                </p>
+                                                <div class="alert alert-primary bg-primary border-0 text-white"
+                                                    role="alert">
+                                                    This is a primary alert—check it out!
+                                                </div>
+                                                <p class="font-size-13 text-secondary">Alert Secondary
+                                                    <code>.alert-secondary .bg-secondary .border-0</code>
+                                                </p>
+                                                <div class="alert alert-secondary bg-secondary border-0 text-white"
+                                                    role="alert">
+                                                    This is a secondary alert—check it out!
+                                                </div>
+                                                <p class="font-size-13 text-secondary">Alert Success
+                                                    <code>.alert-success .bg-success .border-0</code>
+                                                </p>
+                                                <div class="alert alert-success bg-success border-0 text-white"
+                                                    role="alert">
+                                                    This is a success alert—check it out!
+                                                </div>
+                                                <p class="font-size-13 text-secondary">Alert Danger
+                                                    <code>.alert-danger .bg-danger .border-0</code>
+                                                </p>
+                                                <div class="alert alert-danger mb-0 bg-danger border-0 text-white"
+                                                    role="alert">
+                                                    This is a danger alert—check it out!
+                                                </div>
+                                            </div>
+                                            <!-- End Col -->
+
+                                            <div class="col-md-12 col-lg-6">
+                                                <p class="font-size-13 text-secondary">Alert pink
+                                                    <code>.alert-pink .bg-pink .border-0</code>
+                                                </p>
+                                                <div class="alert alert-pink bg-pink alert-dismissible fade show border-0 text-white"
+                                                    role="alert">
+
+                                                    This is a pink alert—check it out!
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <p class="font-size-13 text-secondary">Alert purple
+                                                    <code>.alert-purple .bg-purple .border-0</code>
+                                                </p>
+                                                <div class="alert alert-purple bg-purple alert-dismissible fade show border-0 text-white"
+                                                    role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                    This is a purple alert—check it out!
+                                                </div>
+                                                <p class="font-size-13 text-secondary">Alert dark
+                                                    <code>.alert-dark .bg-dark .text-light .border-0</code>
+                                                </p>
+                                                <div class="alert alert-dark bg-dark border-0 alert-dismissible fade show text-light"
+                                                    role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                    This is a dark alert—check it out!
+                                                </div>
+                                                <p class="font-size-13 text-secondary">Alert light
+                                                    <code>.alert-light .bg-light .border-0</code>
+                                                </p>
+                                                <div class="alert alert-light mb-0 border-0 alert-dismissible fade show bg-light text-muted"
+                                                    role="alert">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                    This is a light alert—check it out!
+                                                </div>
+                                            </div>
+                                            <!-- End Col -->
+                                        </div>
+                                    </div>
+                                    <!-- End Cardbody -->
+                                </div>
+                                <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Additional content</h5>
+                                        <p class="card-title-desc">Alerts can also contain additional HTML elements like
+                                            headings and paragraphs.</p>
+                                        <div class="">
+                                            <div class="alert alert-primary mb-0 p-3" role="alert">
+                                                <h4 class="alert-heading font-size-18">Well done!</h4>
+                                                <p class="mb-2">Aww yeah, you successfully read this important alert
+                                                    message. This example text is going to run a bit longer so that you can
+                                                    see how spacing within an alert works with this kind of content.</p>
+                                                <p class="mb-0">Whenever you need to, be sure to use margin utilities to
+                                                    keep things nice and tidy.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Cardbody -->
+                                </div>
+                                <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!--End Row-->
+
+                    </div>
+                    <!-- Container-Fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+
+</html>

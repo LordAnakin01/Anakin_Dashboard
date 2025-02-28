@@ -1,0 +1,209 @@
+@@include("partials/main.html")
+
+    <head>
+        
+        @@include("partials/title-meta.html", {"title": "Ratings"})
+
+        <link href="assets/libs/jquery-bar-rating/themes/bars-1to10.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/bars-horizontal.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/bars-movie.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/bars-pill.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/bars-reversed.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/bars-square.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/bootstrap-stars.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/css-stars.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/fontawesome-stars-o.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/jquery-bar-rating/themes/fontawesome-stars.css" rel="stylesheet" type="text/css" />
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"Advanced UI", "title": "Ratings"})
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ratings</h5>
+                                        <p class="card-title-desc">jQuery Bar Rating Plugin works by transforming a standard select field into a rating widget. 
+                                            The rating widget can be flexibly styled with CSS. 
+                                            Take a look at a few examples.
+                                        </p>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">Default rating</h5>
+                                                    <select id="example-fontawesome">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>                                                              
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">CSS Stars</h5>
+                                                    <select id="example-css" name="rating" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">Current rating: <span class="value"></span></h5>
+                                                    <select id="example-fontawesome-o" name="rating" data-current-rating="5.6" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">Square Rating</h5>
+                                                    <select id="example-square" name="rating" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">Pill Rating</h5>
+                                                    <select id="example-pill" name="rating" autocomplete="off">
+                                                        <option value="A">A</option>
+                                                        <option value="B">B</option>
+                                                        <option value="C">C</option>
+                                                        <option value="D">D</option>
+                                                        <option value="E">E</option>
+                                                        <option value="F">F</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">Reversed Rating</h5>
+                                                    <select id="example-reversed" name="rating" autocomplete="off">
+                                                        <option value="Strongly Agree">Strongly Agree</option>
+                                                        <option value="Agree">Agree</option>
+                                                        <option value="Neither Agree or Disagree" selected="selected">Neither Agree or Disagree</option>
+                                                        <option value="Disagree">Disagree</option>
+                                                        <option value="Strongly Disagree">Strongly Disagree</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">Horizontal Rating</h5>
+                                                    <select id="example-horizontal" name="rating" autocomplete="off">
+                                                        <option value="10">10</option>
+                                                        <option value="9">9</option>
+                                                        <option value="8">8</option>
+                                                        <option value="7">7</option>
+                                                        <option value="6">6</option>
+                                                        <option value="5">5</option>
+                                                        <option value="4">4</option>
+                                                        <option value="3">3</option>
+                                                        <option value="2">2</option>
+                                                        <option value="1" selected="selected">1</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">1/10 Rating</h5>
+                                                    <select id="example-1to10" name="rating" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7" selected="selected">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                </div>
+                                            </div>    
+    
+                                            <div class="col-lg-4">
+                                                <div class="pt-5">
+                                                    <h5 class="card-title mb-4">Movie Rating</h5>
+                                                    <select id="example-movie" name="rating" autocomplete="off">
+                                                        <option value="Bad">Bad</option>
+                                                        <option value="Mediocre">Mediocre</option>
+                                                        <option value="Good" selected="selected">Good</option>
+                                                        <option value="Awesome">Awesome</option>
+                                                    </select>
+                                                </div>
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row --> 
+                        
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+        <script src="assets/libs/jquery-bar-rating/jquery.barrating.min.js"></script>
+
+        <script src="assets/js/pages/rating-init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+</html>

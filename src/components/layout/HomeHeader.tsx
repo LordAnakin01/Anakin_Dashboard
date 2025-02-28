@@ -58,10 +58,10 @@ export default function HomeHeader() {
               Sign in
             </Link>
             <Link
-              href="/auth/signup"
+              href="/portal"
               className="px-4 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors"
             >
-              Get Started
+              Member Portal
             </Link>
           </div>
         </div>
@@ -114,10 +114,10 @@ export default function HomeHeader() {
                 Sign in
               </Link>
               <Link
-                href="/auth/signup"
+                href="/portal"
                 className="px-4 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors text-center"
               >
-                Get Started
+                Member Portal
               </Link>
             </nav>
           </div>

@@ -1,0 +1,199 @@
+@@include("partials/main.html")
+
+    <head>
+
+        @@include("partials/title-meta.html", {"title": "Lightbox"})
+
+        <!-- Lightbox css -->
+        <link href="assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"Advanced UI", "title":"Lightbox"})
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Single image lightbox</h5>
+                                        <p class="card-title-desc">Three simple popups with different scaling settings.</p>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="font-size-13 mb-3 text-muted">Fits (Horz/Vert)</h5>
+                                                <a class="image-popup-vertical-fit" href="assets/images/small/img-2.jpg"
+                                                    title="Caption. Can be aligned it to any side and contain any HTML.">
+                                                    <img class="img-fluid" alt="" src="assets/images/small/img-2.jpg"
+                                                        width="145">
+                                                </a>
+                                            </div>
+                                            <!-- end col -->
+                                            <div class="col-md-6">
+                                                <h5 class="font-size-13 mb-3 text-muted">Effects</h5>
+                                                <a class="image-popup-no-margins" href="assets/images/small/img-3.jpg">
+                                                    <img class="img-fluid" alt="" src="assets/images/small/img-3.jpg"
+                                                        width="75">
+                                                </a>
+                                                <p class="mt-2 mb-0 font-size-13 text-muted">No gaps, zoom animation, close
+                                                    icon in top-right corner.</p>
+                                            </div>
+                                            <!-- end col -->
+                                        </div>
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                                <!-- end card -->
+
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Popup with video or map</h5>
+                                        <p class="card-title-desc">In this example lazy-loading of images is enabled for the
+                                            next image based on move direction. </p>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="button-items">
+                                                    <a class="popup-youtube btn btn-youtube"
+                                                        href="http://www.youtube.com/watch?v=0O2aH4XLbto"><i
+                                                            class="mdi mdi-youtube me-2"></i>Open YouTube Video</a>
+                                                    <a class="popup-vimeo btn btn-info" href="https://vimeo.com/45830194"><i
+                                                            class="mdi mdi-vimeo me-2"></i>Open Vimeo Video</a>
+                                                    <a class="popup-gmaps btn btn-primary"
+                                                        href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom"><i
+                                                            class="mdi mdi-map me-2"></i>Open Google Map</a>
+                                                </div>
+                                            </div>
+                                            <!-- end col -->
+                                        </div>
+                                        <!-- end row -->
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Lightbox gallery</h5>
+                                        <p class="card-title-desc">In this example lazy-loading of images is enabled for the
+                                            next image based on move direction. </p>
+
+                                        <div class="popup-gallery">
+                                            <a class="float-start" href="assets/images/small/img-1.jpg" title="Project 1">
+                                                <div class="img-fluid">
+                                                    <img src="assets/images/small/img-1.jpg" alt="" width="248">
+                                                </div>
+                                            </a>
+                                            <a class="float-start" href="assets/images/small/img-2.jpg" title="Project 2">
+                                                <div class="img-fluid">
+                                                    <img src="assets/images/small/img-2.jpg" alt="" width="248">
+                                                </div>
+                                            </a>
+                                            <a class="float-start" href="assets/images/small/img-3.jpg" title="Project 3">
+                                                <div class="img-fluid">
+                                                    <img src="assets/images/small/img-3.jpg" alt="" width="248">
+                                                </div>
+                                            </a>
+                                            <a class="float-start" href="assets/images/small/img-4.jpg" title="Project 4">
+                                                <div class="img-fluid">
+                                                    <img src="assets/images/small/img-4.jpg" alt="" width="248">
+                                                </div>
+                                            </a>
+                                            <a class="float-start" href="assets/images/small/img-5.jpg" title="Project 5">
+                                                <div class="img-fluid">
+                                                    <img src="assets/images/small/img-5.jpg" alt="" width="248">
+                                                </div>
+                                            </a>
+                                            <a class="float-start" href="assets/images/small/img-6.jpg" title="Project 6">
+                                                <div class="img-fluid">
+                                                    <img src="assets/images/small/img-6.jpg" alt="" width="248">
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end-card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Zoom Gallery</h5>
+                                        <p class="card-title-desc">Zoom effect works only with images.</p>
+
+                                        <div class="zoom-gallery">
+                                            <a class="float-start" href="assets/images/small/img-1.jpg"
+                                                title="Project 1"><img src="assets/images/small/img-1.jpg" alt=""
+                                                    width="390" class="img-fluid"></a>
+                                            <a class="float-start" href="assets/images/small/img-2.jpg"
+                                                title="Project 2"><img src="assets/images/small/img-2.jpg" alt=""
+                                                    width="390" class="img-fluid"></a>
+                                            <a class="float-start" href="assets/images/small/img-3.jpg"
+                                                title="Project 1"><img src="assets/images/small/img-3.jpg" alt=""
+                                                    width="390" class="img-fluid"></a>
+                                            <a class="float-start" href="assets/images/small/img-7.jpg"
+                                                title="Project 2"><img src="assets/images/small/img-7.jpg" alt=""
+                                                    width="390" class="img-fluid"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+        <!-- Magnific Popup-->
+        <script src="assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Tour init js-->
+        <script src="assets/js/pages/lightbox.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+
+</html>

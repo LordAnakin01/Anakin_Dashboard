@@ -1,0 +1,102 @@
+
+// FAQS.scss
+
+.accordion-plus-icon {
+  .btn{
+    white-space: normal;
+  }
+  .card{
+    box-shadow: none;
+
+    .accordion-header {
+      .accordion-button.collapsed::after{
+        content: "\f067";
+        transform: rotate(-180deg);
+      }
+    }
+
+    .accordion-header {
+      .accordion-button{
+        padding-left: 54px;
+      
+        &:after {
+          content: "\f068";
+          font-family: 'Font Awesome 5 Free' !important;
+          font-weight: 600;
+          position: absolute;
+          left: 18px;
+          transition: transform .25s;
+          transform: rotate(180deg);
+          color: $primary;
+          font-size: 12px;
+          background-image: none;
+        }
+      }
+    }
+  }
+  
+}
+
+@media (max-width: 1024px){
+  .mo-b-15{
+    margin-bottom: 15px;
+  }
+}
+
+
+
+
+/*--accordion--*/
+
+.accordion {
+  box-shadow: none;
+  .card-header{
+    background-color: rgba($gray-200, .5);
+    border: 1px solid rgba($gray-200, .5);
+    padding: 0 12px;
+  } 
+  .btn{
+    margin-bottom: 0;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    color: $gray-800;
+  }
+}
+
+#accordionExample .card-header h5{
+  button.collapsed::before{
+    content: "\f067";
+    transform: rotate(-90deg);
+  }
+  button::before {
+    content: "\f068";
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 600;
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    transition: transform .25s;
+    transform: rotate(0deg);
+    color: $primary;
+  }
+} 
+
+#accordionExample2 .card-header h5 {
+  button.collapsed::before {
+    content: '\f107';
+    transform: rotate(-180deg);
+  }
+  button::before {
+    content: '\f106';
+    font-family: 'Font Awesome 5 Free' !important;
+    font-weight: 600;
+    position: absolute;
+    top: 18px;
+    right: 25px;
+    transition: transform .25s;
+    transform: rotate(180deg);
+    color: $primary;
+  }
+}

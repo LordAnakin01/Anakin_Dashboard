@@ -1,0 +1,230 @@
+@@include("partials/main.html")
+
+    <head>
+
+        @@include("partials/title-meta.html", {"title": "Tour"})
+
+        <link href="assets/libs/shepherd.js/css/shepherd.css" rel="stylesheet" type="text/css">
+
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+        
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"Pages", "title": "Tour"})
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card hero-welcome" id="hero-step">
+                                    <div class="card-body">
+
+
+                                        <div class="jumbotron mb-0">
+                                            <h1 class="display-6">Welcome Back !</h1>
+                                            <p class="lead">If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual</p>
+                                            <hr class="my-4">
+                                            <p>It uses utility classes for typography and spacing to space content out
+                                                within the larger container.</p>
+                                            <p class="lead">
+                                                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card tour-table" id="table-step">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Basic example</h5>
+                                        <p class="card-title-desc">For basic styling—light padding and
+                                            only horizontal dividers—add the base class <code>.table</code> to any
+                                            <code>&lt;table&gt;</code>.
+                                        </p>
+
+                                        <table class="table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th> Name</th>
+                                                    <th>Email</th>
+                                                    <th>Access</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Mark</td>
+                                                    <td>XYZ@Example.com</td>
+                                                    <td><span class="badge bg-success">Business</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>XYZ@Example.com</td>
+                                                    <td><span class="badge bg-warning">Personal</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Larry</td>
+                                                    <td>XYZ@Example.com</td>
+                                                    <td><span class="badge bg-danger">Disabled</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- end table -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+
+                            <div class="col-md-12 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h5 class="card-title">Bordered table</h5>
+                                        <p class="card-title-desc">Add <code>.table-bordered</code> for
+                                            borders on all sides of the table and cells.
+                                        </p>
+
+                                        <table class="table table-bordered mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Username</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Mark</td>
+                                                    <td>Otto</td>
+                                                    <td>@mdo</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Mark</td>
+                                                    <td>Otto</td>
+                                                    <td>@TwBootstrap</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td colspan="2">Larry the Bird</td>
+                                                    <td>@twitter</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!-- end table -->
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="assets/images/small/img-6.jpg"
+                                        alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text  text-muted font-13">Some quick example text to build on the
+                                            card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card  card-table">
+                                    <img class="card-img-top img-fluid" src="assets/images/small/img-4.jpg"
+                                        alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text  text-muted font-13">Some quick example text to build on the
+                                            card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-xl-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="assets/images/small/img-7.jpg"
+                                        alt="Card image cap">
+                                    <div class="card-body p-3">
+                                        <blockquote class="blockquote mb-0">
+                                            <p class="card-text text-muted font-size-14">It is a long established fact that a
+                                                reader will be
+                                                by the readable of a page when looking at its layout.
+                                                The point of using
+                                                Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+                                                as opposed to using.
+                                            </p>
+                                            <a href="#" class="btn btn-primary  float-end">Go somewhere</a>
+                                            <footer class="blockquote-footer text-muted">
+                                                <small class="">
+                                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                            </div>
+                            <!--end col-->
+
+                        </div>
+                        <!--end row-->
+
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+        <script src="assets/libs/shepherd.js/js/shepherd.min.js"></script>
+
+        <script src="assets/js/pages/tour.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+
+</html>

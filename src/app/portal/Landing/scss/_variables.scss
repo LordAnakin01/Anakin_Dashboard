@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700');
+
+
+// Color variables
+
+$white:                     #ffffff;
+$primary:                   #3185a9;
+$secondary:                 #9a9a9a;
+$success:                   #0acf97;
+$info:                      #2d7bf4;
+$warning:                   #f9bc0b;
+$danger:                    #dc3545;
+$purple:                    #777edd;
+$pink:                      #ff679b;
+$muted:                     #6c757d;
+$dark:                      #313a46;
+$light:                     #e7eff7;
+
+// Gray Colors
+$gray-100:                  #f8f9fa;
+$gray-200:                  #e9ecef;
+$gray-300:                  #dee2e6;
+$gray-400:                  #ced4da;
+$gray-500:                  #adb5bd;
+$gray-600:                  #6c757d;
+$gray-700:                  #495057;
+$gray-800:                  #343a40;
+$gray-900:                  #212529;
+
+
+$colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "dark": $dark,
+    "muted": $muted,
+    "purple": $purple,
+    "pink": $pink,
+    "white": $white,
+    "light": $light
+);
+
+
+// Body Background
+$bg-body:                   #fff;
+$topbar:                    #3185a9;
+
+
+// Font variables
+$font-primary:                'Rubik', sans-serif;
+
+// Font Base
+$font-size-base:              14px;
+
+// Shadow
+$shadow:                      0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+$shadow-lg:                   0 0 24px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.1);
+$shadow-inset:                inset 0 0 5px rgba(0, 0, 0, 0.1);

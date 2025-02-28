@@ -1,0 +1,123 @@
+@@include("partials/main.html")
+
+    <head>
+        
+        @@include("partials/title-meta.html", {"title": "Morris Chart"})
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+    
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"Charts", "title": "Morris Chart"})
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h5 class="card-title">Bar Chart</h5>
+                                        <p class="card-title-desc d-inline-block text-truncate w-100">Create bar charts using
+                                            Morris.Bar(options), where options is an object containing the
+                                            configuration options.
+                                        </p>            
+                                        <div id="morris-bar-example" class="morris-charts morris-charts-height" dir="ltr"></div>            
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                            
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">            
+                                        <h5 class="card-title">Donut Chart</h5>
+                                        <p class="card-title-desc d-inline-block text-truncate w-100">This really couldn't be easier. Create
+                                            a Donut chart using Morris.Donut(options).
+                                        </p>            
+                                        <div id="morris-donut-example" class="morris-charts morris-charts-height" dir="ltr"></div>            
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+        
+        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">            
+                                        <h5 class="card-title">Area Chart</h5>
+                                        <p class="card-title-desc d-inline-block text-truncate w-100">Create an area chart using
+                                            Morris.Area(options). Area charts take all the same options as line
+                                            charts.
+                                        </p>            
+                                        <div id="morris-area-example" class="morris-charts morris-charts-height"  dir="ltr"></div>            
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">            
+                                        <h5 class="card-title">Line Chart</h5>
+                                        <p class="card-title-desc d-inline-block text-truncate w-100">The public API is terribly simple. It's
+                                            just one function: Morris.Line (options), where options is an object
+                                            containing some of the configuration options.
+                                        </p>            
+                                        <div id="morris-line-example" class="morris-charts morris-charts-height" dir="ltr"></div>            
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                            
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">            
+                                        <h5 class="card-title">Line Chart</h5>
+                                        <p class="card-title-desc d-inline-block text-truncate w-100">The public API is terribly simple. It's
+                                            just one function: Morris.Line (options), where options is an object
+                                            containing some of the configuration options.
+                                        </p>            
+                                        <div id="morris-bar-stacked" class="morris-charts morris-charts-height" dir="ltr"></div>            
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row --> 
+                        
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+            <!--Morris Chart-->
+    <script src="assets/libs/morris.js/morris.min.js"></script>
+    <script src="assets/libs/raphael/raphael.min.js"></script>
+
+    <!-- Init js -->
+    <script src="assets/js/pages/morris.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+</html>

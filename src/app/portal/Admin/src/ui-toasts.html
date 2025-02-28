@@ -1,0 +1,217 @@
+@@include("partials/main.html")
+
+    <head>
+
+        @@include("partials/title-meta.html", {"title": "Toasts"})
+
+        @@include("partials/head-css.html")
+
+    </head>
+
+    @@include("partials/body.html")
+        
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/menu.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        @@include("partials/page-title.html", {"pagetitle": "Amezia", "subtitle":"UI Kit", "title": "Toasts"})
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Basic</h5>
+                                        <p class="card-title-desc">
+                                            Toasts are as flexible as you need and have very little required markup.
+                                            At a minimum, we require a single element to contain your
+                                            “toasted” content and strongly encourage a dismiss button.
+                                        </p>
+                                        <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-toggle="toast">
+                                            <div class="toast-header">
+                                                <i class="mdi mdi-account me-1 text-info"></i>
+                                                <strong class="me-auto">Amezia</strong>
+                                                <small>11 mins ago</small>
+                                                <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close">
+                                                </button>
+                                            </div>
+                                            <div class="toast-body">
+                                                Hello, world! This is a toast message.
+                                            </div>
+                                        </div>
+                                        <!--end toast-->
+                                    </div>
+                                    <!--end card-body-->
+                                </div>
+                                <!--end card-->
+                            </div>
+                            <!--end col-->
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Translucent</h5>
+                                        <p class="card-title-desc">
+                                            Toasts are slightly translucent, too, so they blend over
+                                            whatever they might appear over. For browsers that
+                                            support the <code class="highlighter-rouge">backdrop-filter</code> CSS property,
+                                            we’ll also attempt to blur the elements under a toast.
+                                        </p>
+                                        <div class="bg-light p-3">
+                                            <div class="toast fade show" role="alert" aria-live="assertive"
+                                                aria-atomic="true" data-bs-toggle="toast">
+                                                <div class="toast-header">
+                                                    <i class="mdi mdi-account me-1 text-success"></i>
+                                                    <strong class="me-auto">Amezia</strong>
+                                                    <small>11 mins ago</small>
+                                                    <button type="button" class="ms-2 mb-1 btn-close"
+                                                        data-bs-dismiss="toast" aria-label="Close">
+                                                    </button>
+                                                </div>
+                                                <div class="toast-body">
+                                                    Hello, world! This is a toast message.
+                                                </div>
+                                            </div>
+                                            <!--end toast-->
+                                        </div>
+                                        <!--end /div-->
+                                    </div>
+                                    <!--end card-body-->
+                                </div>
+                                <!--end card-->
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Stacking</h5>
+                                        <p class="card-title-desc">
+                                            For systems that generate more notifications, consider using a wrapping element
+                                            so they can easily stack.
+                                        </p>
+                                        <div class="bg-light p-3">
+                                            <div aria-live="polite" aria-atomic="true"
+                                                style="position: relative; min-height: 200px;">
+                                                <!-- Position it -->
+                                                <div style="position: absolute; top: 0; right: 0;">
+
+                                                    <!-- Then put toasts within -->
+                                                    <div class="toast fade show" role="alert" aria-live="assertive"
+                                                        aria-atomic="true" data-bs-toggle="toast">
+                                                        <div class="toast-header">
+                                                            <i class="mdi mdi-account me-1 text-warning"></i>
+                                                            <strong class="me-auto">Amezia</strong>
+                                                            <small class="text-muted">just now</small>
+                                                            <button type="button" class="ms-2 mb-1 btn-close"
+                                                                data-bs-dismiss="toast" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="toast-body">
+                                                            See? Just like this.
+                                                        </div>
+                                                    </div>
+                                                    <!--end toast-->
+
+                                                    <div class="toast fade show" role="alert" aria-live="assertive"
+                                                        aria-atomic="true" data-bs-toggle="toast">
+                                                        <div class="toast-header">
+                                                            <i class="mdi mdi-account me-1 text-info"></i>
+                                                            <strong class="me-auto">Amezia</strong>
+                                                            <small class="text-muted">2 seconds ago</small>
+                                                            <button type="button" class="ms-2 mb-1 btn-close"
+                                                                data-bs-dismiss="toast" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="toast-body">
+                                                            Heads up, toasts will stack automatically
+                                                        </div>
+                                                    </div>
+                                                    <!--end toast-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end /div-->
+                                    </div>
+                                    <!--end card-body-->
+                                </div>
+                                <!--end card-->
+                            </div>
+                            <!--end col-->
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Placement</h5>
+                                        <p class="card-title-desc">
+                                            You can also get fancy with flexbox utilities to align toasts horizontally
+                                            and/or vertically.
+                                        </p>
+                                        <div class="bg-light p-3">
+                                            <div aria-live="polite" aria-atomic="true"
+                                                class="d-flex justify-content-center align-items-center"
+                                                style="min-height: 200px;">
+
+                                                <!-- Then put toasts within -->
+                                                <div class="toast fade show" role="alert" aria-live="assertive"
+                                                    aria-atomic="true" data-bs-toggle="toast">
+                                                    <div class="toast-header">
+                                                        <i class="mdi mdi-account me-1 text-secondary"></i>
+                                                        <strong class="me-auto">Amezia</strong>
+                                                        <small>11 mins ago</small>
+                                                        <button type="button" class="ms-2 mb-1 btn-close"
+                                                            data-bs-dismiss="toast" aria-label="Close">
+                                                        </button>
+                                                    </div>
+                                                    <div class="toast-body">
+                                                        Hello, world! This is a toast message.
+                                                    </div>
+                                                </div>
+                                                <!--end toast-->
+                                            </div>
+                                        </div>
+                                        <!--end div-->
+                                    </div>
+                                    <!--end card-body-->
+                                </div>
+                                <!--end card-->
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        @@include("partials/right-sidebar.html")
+
+        @@include("partials/vendor-scripts.html")
+
+        <script src="assets/js/pages/toasts.init.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+
+</html>

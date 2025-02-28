@@ -4,7 +4,6 @@ import type { NextRequest } from 'next/server'
 import type { CookieOptions } from '@supabase/ssr'
 
 const protectedRoutes = [
-  '/dashboard',
   '/apps',
   '/membership',
   '/jobs',
@@ -44,11 +43,6 @@ export async function middleware(request: NextRequest) {
   )
 
   const { data: { session } } = await supabase.auth.getSession()
-
-  // If user is signed in and accessing root or home page, redirect to dashboard
-  if (session && (request.nextUrl.pathname === '/' || request.nextUrl.pathname === '/home')) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
-  }
 
   // If accessing root, redirect to home
   if (request.nextUrl.pathname === '/') {

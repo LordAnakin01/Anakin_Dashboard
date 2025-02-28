@@ -1,0 +1,178 @@
+//
+// root.scss
+//
+
+@mixin color-mode($mode: light, $root: false) {
+    @if $color-mode-type == "media-query" {
+        @if $root ==true {
+            @media (prefers-color-scheme: $mode) {
+                :root {
+                    @content;
+                }
+            }
+        } @else {
+            @media (prefers-color-scheme: $mode) {
+                @content;
+            }
+        }
+    } @else {
+        [data-bs-theme="#{$mode}"] {
+            @content;
+        }
+    }
+}
+
+//theme-light
+:root,
+[data-bs-theme="light"] {
+    --#{$prefix}header-bg: #ffffff;
+    --#{$prefix}header-item-color: #636e75;
+    --#{$prefix}header-height: 70px;
+    --#{$prefix}navbar-brand-box-width: 250px;
+    --#{$prefix}header-dark-bg: #252b3b;
+    --#{$prefix}apex-grid-color: #f8f9fa;
+    --#{$prefix}input-bg: #ffffff;
+
+    --#{$prefix}display-block: block;
+    --#{$prefix}display-none: none;
+    --#{$prefix}footer-height: 60px;
+    --#{$prefix}sidebar-collapsed-width: 70px;
+    --#{$prefix}rightbar-width: 280px;
+    --#{$prefix}sidebar-width-sm: 160px;
+    --#{$prefix}footer-bg: #fff;
+    --#{$prefix}topbar-search-bg: #f1f5f7;
+
+    // vetical sidebar
+    --#{$prefix}sidebar-width: 250px;
+    --#{$prefix}sidebar-bg: #ffffff;
+    --#{$prefix}sidebar-menu-item-color: #6c757d;
+    --#{$prefix}sidebar-menu-sub-item-color: #6c757d;
+    --#{$prefix}sidebar-menu-item-icon-color: #495057;
+    --#{$prefix}sidebar-menu-item-hover-color: #44a2d2;
+    --#{$prefix}sidebar-menu-item-active-color: #44a2d2;
+
+
+    // Vertical Sidebar - Dark
+    [data-sidebar="dark"] {
+        --#{$prefix}sidebar-dark-bg: #1c1f31; //2c313a
+        --#{$prefix}sidebar-dark-menu-item-color: #8f93a4;
+        --#{$prefix}sidebar-menu-item-hover-color: #d7e4ec;
+        --#{$prefix}sidebar-dark-menu-sub-item-color: #8f93a4;
+        --#{$prefix}sidebar-dark-menu-item-icon-color: #8590a5;
+        --#{$prefix}sidebar-dark-menu-item-hover-color: #d7e4ec;
+        --#{$prefix}sidebar-dark-menu-item-active-color: #d7e4ec;
+
+    }
+
+    // Topbar Search
+    --#{$prefix}topbar-search-border: #eff0f2;
+    --#{$prefix}topbar-search-bg: #f1f5f7;
+
+    // Horizontal nav
+    --#{$prefix}topnav-bg: #fff;
+    --#{$prefix}menu-item-color: #74788d;
+    --#{$prefix}menu-item-active-color: #0bb197;
+
+    [data-topbar="dark"] {
+        --#{$prefix}header-bg: $gray-800;
+        --#{$prefix}header-item-color: #a6b0cf;
+        --#{$prefix}header-item-sub-color: #8795ab;
+    }
+    [data-topbar="light"] {
+        --#{$prefix}header-bg: #fff;
+        --#{$prefix}header-item-color: #a6b0cf;
+        --#{$prefix}header-item-sub-color: #8795ab;
+    }
+
+    --#{$prefix}boxed-body-bg: #eaedf2;
+
+    // Footer
+    --#{$prefix}footer-bg: #fff;
+    --#{$prefix}footer-color: #74788d;
+
+    --#{$prefix}font-family-secondary: "Work Sans", sans-serif;
+}
+
+//theme dark
+@if $enable-dark-mode {
+    @include color-mode(dark, true) {
+        --#{$prefix}light: #{$light-dark};
+        --#{$prefix}light-rgb: 45, 52, 72;
+        --#{$prefix}dark: #{$gray-200};
+        --#{$prefix}dark-rgb: #{to-rgb($light-dark)};
+
+
+        --#{$prefix}header-bg: #262b3c;
+        --#{$prefix}header-color: #a3a4ab;
+
+        --#{$prefix}header-dark-bg: #252b3b;
+        --#{$prefix}header-item-color: #a6b0cf;
+        --#{$prefix}topbar-search-bg: #2b3244;
+
+        --#{$prefix}topnav-dark-bg: #292731;
+        --#{$prefix}menu-dark-item-color: #afacbb;
+        --#{$prefix}menu-dark-item-active-color: #eeeff1;
+
+        --#{$prefix}table-bg: var(--#{$prefix}tertiary-bg);
+        --#{$prefix}table-border-color: var(--#{$prefix}border-color);
+        --#{$prefix}table-striped-bg: #2a2f4f66 !important;
+        --#{$prefix}table-active-bg: var(--#{$prefix}tertiary-bg);
+        --#{$prefix}table-hover-bg: var(--#{$prefix}tertiary-bg);
+        
+        // Vertical sidebar
+        --#{$prefix}sidebar-bg: #16192a;
+        --#{$prefix}sidebar-border-color: #eff0f2;
+        --#{$prefix}sidebar-menu-item-color: #8f93a4;
+        --#{$prefix}sidebar-menu-sub-item-color: #8f93a4;
+        --#{$prefix}sidebar-menu-item-icon-color: #8f93a4;
+        --#{$prefix}sidebar-menu-item-hover-color: #44a2d2;
+        --#{$prefix}sidebar-menu-item-active-bg-color: #44a2d2;
+        --#{$prefix}sidebar-menu-sub-item-line-color: #eaecf1;
+
+        // Vertical Sidebar - Dark
+        --#{$prefix}sidebar-dark-bg: #252b3b; //2c313a
+        --#{$prefix}sidebar-dark-menu-item-color: #afacbb;
+        --#{$prefix}sidebar-dark-menu-sub-item-color: #afacbb;
+        --#{$prefix}sidebar-dark-menu-item-icon-color: #ffffff;
+        --#{$prefix}sidebar-dark-menu-item-hover-color: #ffffff;
+        --#{$prefix}sidebar-dark-menu-item-active-color: #ffffff;
+        --#{$prefix}sidebar-dark-menu-item-active-bg-color: #35333e;
+        --#{$prefix}sidebar-dark-menu-sub-item-line-color: #505356;
+
+        &[data-sidebar="dark"] {
+            --#{$prefix}sidebar-dark-bg: #2a3042;
+            --#{$prefix}sidebar-dark-menu-item-color: #a6b0cf;
+            --#{$prefix}sidebar-dark-menu-sub-item-color: #79829c;
+            --#{$prefix}sidebar-dark-menu-item-icon-color: #6a7187;
+            --#{$prefix}sidebar-dark-menu-item-hover-color: #{$white};
+            --#{$prefix}sidebar-dark-menu-item-active-color: #{$white};
+        }
+
+        // footer
+        --#{$prefix}footer-bg: #212734;
+        --#{$prefix}footer-color: #adb5bd;
+
+        //Horizontal
+        --#{$prefix}topnav-bg: #181b2e;
+        --#{$prefix}topnav-item-color: #afacbb;
+        --#{$prefix}topnav-item-color-active: #{$white};
+        --#{$prefix}menu-item-color: #919bae;
+        --#{$prefix}menu-item-active-color: #ffffff;
+    
+        --#{$prefix}input-bg: #21253e;
+        --#{$prefix}accordion-button-active-bg: #3b403d;
+        --#{$prefix}boxed-body-bg: #32394f;
+        --#{$prefix}header-dark-item-color: #919bae;
+        --#{$prefix}header-dark-bg: #212734;
+        --#{$prefix}apex-grid-color: #373e54;
+
+        --#{$prefix}header-height: 70px;
+        --#{$prefix}navbar-brand-box-width: 250px;
+        --#{$prefix}display-block: block;
+        --#{$prefix}display-none: none;
+        --#{$prefix}footer-height: 60px;
+        --#{$prefix}sidebar-collapsed-width: 70px;
+        --#{$prefix}rightbar-width: 280px;
+        --#{$prefix}sidebar-width-sm: 160px;
+    }
+}
