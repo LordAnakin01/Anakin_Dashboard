@@ -33,30 +33,42 @@ export default function PortalPage() {
                     />
                     <span className="text-xl font-semibold text-white">The Anakin Dynasty</span>
                 </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <i className="mdi mdi-menu"></i>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarCollapse">
-                    <ul className="navbar-nav ms-auto navbar-center" id="mySidenav">
-                        <li className="nav-item">
-                            <a href="#home" className="nav-link active">Home</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#features" className="nav-link">Features</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#pricing" className="nav-link">Pricing</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#faq" className="nav-link">FAQ</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#contact" className="nav-link">Contact</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="/auth/signin" className="nav-link">Login</a>
-                        </li>
-                    </ul>
+
+                <div className="d-flex align-items-center">
+                    <div className="collapse navbar-collapse" id="navbarCollapse">
+                        <ul className="navbar-nav mx-auto navbar-center" id="mySidenav">
+                            <li className="nav-item">
+                                <a href="#home" className="nav-link active">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#features" className="nav-link">Features</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#pricing" className="nav-link">Pricing</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#faq" className="nav-link">FAQ</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#contact" className="nav-link">Contact</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="/auth/signin" className="nav-link">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="d-flex align-items-center gap-4">
+                        <Link 
+                            href="/home" 
+                            className="btn btn-light px-4 py-2 rounded-xl text-decoration-none d-none d-lg-block"
+                        >
+                            Back to Home
+                        </Link>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <i className="mdi mdi-menu"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>

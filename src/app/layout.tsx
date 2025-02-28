@@ -40,7 +40,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/logo.png" />
       </head>
       <body className="h-full bg-gray-50 antialiased">
-        <Header />
         {children}
       </body>
     </html>
